@@ -1,0 +1,43 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::123456789012:role/ServiceA-Role",
+          "arn:aws:iam::123456789012:role/ServiceB-Role"
+        ]
+      },
+      "Action": "execute-api:Invoke",
+      "Resource": "arn:aws:execute-api:us-east-1:123456789012:api-id/*",
+      "Condition": {
+        "StringEquals": {
+          "aws:SourceVpce": "vpce-12345"
+        }
+      }
+    },
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "execute-api:Invoke",
+      "Resource": "arn:aws:execute-api:us-east-1:123456789012:api-id/*",
+      "Condition": {
+        "StringNotEquals": {
+          "aws:SourceVpce": "vpce-12345"
+        }
+      }
+    }
+  ],
+  "Description": "Zero Trust resource policy for API Gateway",
+  "Notes": {
+    "AllowStatement": "Explicitly allows only specific IAM roles from specific VPC endpoint",
+    "DenyStatement": "Explicitly denies all access not from the VPC endpoint",
+    "ZeroTrustPrinciples": [
+      "Never trust, always verify",
+      "Least privilege access",
+      "Explicit authorization required",
+      "Network location doesn't grant trust"
+    ]
+  }
+}

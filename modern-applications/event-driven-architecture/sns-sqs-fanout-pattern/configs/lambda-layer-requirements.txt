@@ -1,0 +1,4 @@
+# Python dependencies for image processing Lambda functions
+# Install with: pip install -r requirements.txt -t python/lib/python3.x/site-packages/
+
+Pillow==10.1.0

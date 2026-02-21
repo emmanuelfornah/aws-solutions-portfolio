@@ -1,0 +1,18 @@
+{
+  "ClientName": "api-gateway-client",
+  "ExplicitAuthFlows": [
+    "ALLOW_USER_PASSWORD_AUTH",
+    "ALLOW_REFRESH_TOKEN_AUTH"
+  ],
+  "TokenValidityUnits": {
+    "AccessToken": "hours",
+    "IdToken": "hours",
+    "RefreshToken": "days"
+  },
+  "AccessTokenValidity": 1,
+  "IdTokenValidity": 1,
+  "RefreshTokenValidity": 30,
+  "ReadAttributes": ["email", "name"],
+  "WriteAttributes": ["email", "name"],
+  "PreventUserExistenceErrors": "ENABLED"
+}

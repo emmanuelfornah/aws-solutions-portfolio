@@ -1,0 +1,18 @@
+{
+  "Comment": "A record configuration for www.anycompany.corp",
+  "Changes": [
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "www.anycompany.corp",
+        "Type": "A",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "[INSTANCE-A-ELASTIC-IP]"
+          }
+        ]
+      }
+    }
+  ]
+}

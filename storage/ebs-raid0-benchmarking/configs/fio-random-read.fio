@@ -1,0 +1,11 @@
+[random-read-4k]
+description=Random read test with 4K block size
+rw=randread
+bs=4K
+iodepth=64
+direct=1
+size=1G
+numjobs=1
+runtime=60
+time_based=1
+group_reporting=1

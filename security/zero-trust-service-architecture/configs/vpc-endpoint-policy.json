@@ -1,0 +1,40 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "execute-api:Invoke",
+      "Resource": [
+        "arn:aws:execute-api:us-east-1:123456789012:api-id-1/*",
+        "arn:aws:execute-api:us-east-1:123456789012:api-id-2/*"
+      ]
+    },
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "execute-api:Invoke",
+      "Resource": "*",
+      "Condition": {
+        "StringNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::123456789012:role/ServiceA-Role",
+            "arn:aws:iam::123456789012:role/ServiceB-Role"
+          ]
+        }
+      }
+    }
+  ],
+  "Description": "VPC endpoint policy for API Gateway access",
+  "Notes": {
+    "Purpose": "Controls which APIs can be accessed through this VPC endpoint",
+    "AllowStatement": "Allows access only to specific APIs",
+    "DenyStatement": "Denies access from principals not in the allowed list",
+    "BestPractices": [
+      "Restrict to specific API IDs",
+      "Limit to authorized IAM roles",
+      "Use explicit deny for additional security",
+      "Regular audit of allowed resources"
+    ]
+  }
+}

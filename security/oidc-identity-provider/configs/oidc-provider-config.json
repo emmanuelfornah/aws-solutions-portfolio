@@ -1,0 +1,25 @@
+{
+  "ProviderUrl": "https://auth.provider.com",
+  "Description": "OIDC identity provider configuration for web identity federation",
+  "ClientIdList": [
+    "your-client-id-here"
+  ],
+  "ThumbprintList": [
+    "9e99a48a9960b14926bb7f3b02e22da2b0ab7280"
+  ],
+  "Tags": [
+    {
+      "Key": "Purpose",
+      "Value": "WebIdentityFederation"
+    },
+    {
+      "Key": "Environment",
+      "Value": "Lab"
+    }
+  ],
+  "Notes": {
+    "ThumbprintGeneration": "Thumbprint is the SHA-1 fingerprint of the top intermediate CA certificate in the provider's certificate chain",
+    "ClientIdUsage": "Client IDs are validated against the 'aud' claim in JWT tokens",
+    "ProviderUrlFormat": "Must be HTTPS URL without query parameters or fragments"
+  }
+}

@@ -1,0 +1,7 @@
+# Python dependencies for URL Checker application
+
+# HTTP library for making requests
+requests==2.31.0
+
+# Library for formatting output tables
+tabulate==0.9.0

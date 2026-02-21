@@ -1,0 +1,15 @@
+{
+  "Comment": "Private hosted zone configuration for AnyCompany VPC",
+  "HostedZone": {
+    "Name": "anycompany.corp",
+    "Config": {
+      "Comment": "Private DNS for internal service discovery",
+      "PrivateZone": true
+    }
+  },
+  "VPC": {
+    "VPCRegion": "us-east-1",
+    "VPCId": "vpc-xxxxxxxxxxxxxxxxx"
+  },
+  "DelegationSet": null
+}

@@ -1,0 +1,23 @@
+{
+  "BackupPlan": {
+    "BackupPlanName": "EFS-Daily-Backup-Plan",
+    "Rules": [
+      {
+        "RuleName": "DailyBackupRule",
+        "TargetBackupVaultName": "EFS-Backup-Vault",
+        "ScheduleExpression": "cron(0 2 * * ? *)",
+        "StartWindowMinutes": 60,
+        "CompletionWindowMinutes": 120,
+        "Lifecycle": {
+          "DeleteAfterDays": 30,
+          "MoveToColdStorageAfterDays": 7
+        },
+        "RecoveryPointTags": {
+          "Environment": "Production",
+          "BackupType": "Automated",
+          "Service": "EFS"
+        }
+      }
+    ]
+  }
+}

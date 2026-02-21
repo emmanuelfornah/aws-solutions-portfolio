@@ -1,0 +1,43 @@
+version: 0.0
+os: linux
+
+# AWS CodeDeploy AppSpec file
+# Defines deployment instructions for the Flask application
+
+files:
+  # Copy application files to the deployment directory
+  - source: /
+    destination: /var/www/flaskapp
+
+hooks:
+  # Deployment lifecycle hooks
+  
+  BeforeInstall:
+    # Run before installing the application
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: root
+  
+  AfterInstall:
+    # Run after installing the application files
+    - location: scripts/after_install.sh
+      timeout: 300
+      runas: root
+  
+  ApplicationStart:
+    # Start the application
+    - location: scripts/start_application.sh
+      timeout: 300
+      runas: root
+  
+  ApplicationStop:
+    # Stop the application (runs before new deployment)
+    - location: scripts/stop_application.sh
+      timeout: 300
+      runas: root
+  
+  ValidateService:
+    # Validate the application is running correctly
+    - location: scripts/validate_service.sh
+      timeout: 300
+      runas: root

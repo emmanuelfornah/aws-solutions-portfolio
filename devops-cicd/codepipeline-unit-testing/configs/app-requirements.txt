@@ -1,0 +1,31 @@
+# Application Dependencies for Presidents App
+# Install with: pip install -r app-requirements.txt
+
+# Web Framework
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# AWS SDK for Python
+boto3==1.28.25
+botocore==1.31.25
+
+# YAML Configuration Support
+PyYAML==6.0.1
+
+# Date/Time Utilities (for relativedelta)
+python-dateutil==2.8.2
+
+# WSGI HTTP Server for Production
+gunicorn==21.2.0
+
+# Environment Variable Management
+python-dotenv==1.0.0
+
+# Request Handling
+requests==2.31.0
+
+# JSON Web Token Support (if needed for auth)
+PyJWT==2.8.0
+
+# Logging Enhancements
+python-json-logger==2.0.7

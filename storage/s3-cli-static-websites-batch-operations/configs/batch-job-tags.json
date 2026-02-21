@@ -1,0 +1,16 @@
+{
+  "TagSet": [
+    {
+      "Key": "ProcessedBy",
+      "Value": "BatchOperations"
+    },
+    {
+      "Key": "Environment",
+      "Value": "Lab"
+    },
+    {
+      "Key": "Department",
+      "Value": "Engineering"
+    }
+  ]
+}

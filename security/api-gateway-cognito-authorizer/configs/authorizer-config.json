@@ -1,0 +1,10 @@
+{
+  "Name": "CognitoAuthorizer",
+  "Type": "COGNITO_USER_POOLS",
+  "ProviderARNs": [
+    "arn:aws:cognito-idp:us-east-1:XXXXXXXXXXXX:userpool/us-east-1_XXXXXXXXX"
+  ],
+  "IdentitySource": "method.request.header.Authorization",
+  "AuthorizerResultTtlInSeconds": 300,
+  "AuthType": "cognito_user_pools"
+}

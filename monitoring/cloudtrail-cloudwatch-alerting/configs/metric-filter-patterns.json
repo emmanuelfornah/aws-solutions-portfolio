@@ -1,0 +1,242 @@
+{
+  "metricFilters": [
+    {
+      "name": "FailedConsoleLogins",
+      "description": "Detects failed AWS Console login attempts",
+      "filterPattern": "{ ($.eventName = ConsoleLogin) && ($.errorMessage = \"Failed authentication\") }",
+      "metricTransformation": {
+        "metricNamespace": "Security/Authentication",
+        "metricName": "FailedLoginAttempts",
+        "metricValue": "1",
+        "defaultValue": null,
+        "unit": "Count"
+      },
+      "alarmConfiguration": {
+        "alarmName": "FailedLoginAlarm",
+        "alarmDescription": "Alert when 3+ failed login attempts in 5 minutes",
+        "statistic": "Sum",
+        "period": 300,
+        "evaluationPeriods": 1,
+        "threshold": 2,
+        "comparisonOperator": "GreaterThanThreshold",
+        "treatMissingData": "notBreaching"
+      }
+    },
+    {
+      "name": "RootAccountUsage",
+      "description": "Detects root account activity (should be minimal)",
+      "filterPattern": "{ $.userIdentity.type = \"Root\" && $.userIdentity.invokedBy NOT EXISTS && $.eventType != \"AwsServiceEvent\" }",
+      "metricTransformation": {
+        "metricNamespace": "Security/Authentication",
+        "metricName": "RootAccountUsage",
+        "metricValue": "1",
+        "defaultValue": null,
+        "unit": "Count"
+      },
+      "alarmConfiguration": {
+        "alarmName": "RootAccountUsageAlarm",
+        "alarmDescription": "Alert on any root account usage",
+        "statistic": "Sum",
+        "period": 300,
+        "evaluationPeriods": 1,
+        "threshold": 0,
+        "comparisonOperator": "GreaterThanThreshold",
+        "treatMissingData": "notBreaching"
+      }
+    },
+    {
+      "name": "UnauthorizedAPICalls",
+      "description": "Detects unauthorized API call attempts",
+      "filterPattern": "{ ($.errorCode = \"*UnauthorizedOperation\") || ($.errorCode = \"AccessDenied*\") }",
+      "metricTransformation": {
+        "metricNamespace": "Security/Authorization",
+        "metricName": "UnauthorizedAPICalls",
+        "metricValue": "1",
+        "defaultValue": null,
+        "unit": "Count"
+      },
+      "alarmConfiguration": {
+        "alarmName": "UnauthorizedAPICallsAlarm",
+        "alarmDescription": "Alert when 5+ unauthorized API calls in 5 minutes",
+        "statistic": "Sum",
+        "period": 300,
+        "evaluationPeriods": 1,
+        "threshold": 4,
+        "comparisonOperator": "GreaterThanThreshold",
+        "treatMissingData": "notBreaching"
+      }
+    },
+    {
+      "name": "IAMPolicyChanges",
+      "description": "Detects IAM policy modifications",
+      "filterPattern": "{ ($.eventName = PutUserPolicy) || ($.eventName = PutRolePolicy) || ($.eventName = PutGroupPolicy) || ($.eventName = CreatePolicy) || ($.eventName = DeletePolicy) || ($.eventName = CreatePolicyVersion) || ($.eventName = DeletePolicyVersion) || ($.eventName = AttachUserPolicy) || ($.eventName = AttachRolePolicy) || ($.eventName = AttachGroupPolicy) || ($.eventName = DetachUserPolicy) || ($.eventName = DetachRolePolicy) || ($.eventName = DetachGroupPolicy) }",
+      "metricTransformation": {
+        "metricNamespace": "Security/IAM",
+        "metricName": "IAMPolicyChanges",
+        "metricValue": "1",
+        "defaultValue": null,
+        "unit": "Count"
+      },
+      "alarmConfiguration": {
+        "alarmName": "IAMPolicyChangesAlarm",
+        "alarmDescription": "Alert on IAM policy modifications",
+        "statistic": "Sum",
+        "period": 300,
+        "evaluationPeriods": 1,
+        "threshold": 0,
+        "comparisonOperator": "GreaterThanThreshold",
+        "treatMissingData": "notBreaching"
+      }
+    },
+    {
+      "name": "SecurityGroupChanges",
+      "description": "Detects security group modifications",
+      "filterPattern": "{ ($.eventName = AuthorizeSecurityGroupIngress) || ($.eventName = AuthorizeSecurityGroupEgress) || ($.eventName = RevokeSecurityGroupIngress) || ($.eventName = RevokeSecurityGroupEgress) || ($.eventName = CreateSecurityGroup) || ($.eventName = DeleteSecurityGroup) }",
+      "metricTransformation": {
+        "metricNamespace": "Security/Network",
+        "metricName": "SecurityGroupChanges",
+        "metricValue": "1",
+        "defaultValue": null,
+        "unit": "Count"
+      },
+      "alarmConfiguration": {
+        "alarmName": "SecurityGroupChangesAlarm",
+        "alarmDescription": "Alert on security group modifications",
+        "statistic": "Sum",
+        "period": 300,
+        "evaluationPeriods": 1,
+        "threshold": 2,
+        "comparisonOperator": "GreaterThanThreshold",
+        "treatMissingData": "notBreaching"
+      }
+    },
+    {
+      "name": "NetworkACLChanges",
+      "description": "Detects Network ACL modifications",
+      "filterPattern": "{ ($.eventName = CreateNetworkAcl) || ($.eventName = CreateNetworkAclEntry) || ($.eventName = DeleteNetworkAcl) || ($.eventName = DeleteNetworkAclEntry) || ($.eventName = ReplaceNetworkAclEntry) || ($.eventName = ReplaceNetworkAclAssociation) }",
+      "metricTransformation": {
+        "metricNamespace": "Security/Network",
+        "metricName": "NetworkACLChanges",
+        "metricValue": "1",
+        "defaultValue": null,
+        "unit": "Count"
+      },
+      "alarmConfiguration": {
+        "alarmName": "NetworkACLChangesAlarm",
+        "alarmDescription": "Alert on Network ACL modifications",
+        "statistic": "Sum",
+        "period": 300,
+        "evaluationPeriods": 1,
+        "threshold": 0,
+        "comparisonOperator": "GreaterThanThreshold",
+        "treatMissingData": "notBreaching"
+      }
+    },
+    {
+      "name": "CloudTrailChanges",
+      "description": "Detects CloudTrail configuration changes",
+      "filterPattern": "{ ($.eventName = CreateTrail) || ($.eventName = UpdateTrail) || ($.eventName = DeleteTrail) || ($.eventName = StartLogging) || ($.eventName = StopLogging) }",
+      "metricTransformation": {
+        "metricNamespace": "Security/Audit",
+        "metricName": "CloudTrailChanges",
+        "metricValue": "1",
+        "defaultValue": null,
+        "unit": "Count"
+      },
+      "alarmConfiguration": {
+        "alarmName": "CloudTrailChangesAlarm",
+        "alarmDescription": "Alert on CloudTrail configuration changes",
+        "statistic": "Sum",
+        "period": 300,
+        "evaluationPeriods": 1,
+        "threshold": 0,
+        "comparisonOperator": "GreaterThanThreshold",
+        "treatMissingData": "notBreaching"
+      }
+    },
+    {
+      "name": "S3BucketPolicyChanges",
+      "description": "Detects S3 bucket policy modifications",
+      "filterPattern": "{ ($.eventSource = s3.amazonaws.com) && (($.eventName = PutBucketAcl) || ($.eventName = PutBucketPolicy) || ($.eventName = PutBucketCors) || ($.eventName = PutBucketLifecycle) || ($.eventName = PutBucketReplication) || ($.eventName = DeleteBucketPolicy) || ($.eventName = DeleteBucketCors) || ($.eventName = DeleteBucketLifecycle) || ($.eventName = DeleteBucketReplication)) }",
+      "metricTransformation": {
+        "metricNamespace": "Security/Storage",
+        "metricName": "S3BucketPolicyChanges",
+        "metricValue": "1",
+        "defaultValue": null,
+        "unit": "Count"
+      },
+      "alarmConfiguration": {
+        "alarmName": "S3BucketPolicyChangesAlarm",
+        "alarmDescription": "Alert on S3 bucket policy modifications",
+        "statistic": "Sum",
+        "period": 300,
+        "evaluationPeriods": 1,
+        "threshold": 0,
+        "comparisonOperator": "GreaterThanThreshold",
+        "treatMissingData": "notBreaching"
+      }
+    },
+    {
+      "name": "ConsoleLoginWithoutMFA",
+      "description": "Detects console logins without MFA",
+      "filterPattern": "{ ($.eventName = ConsoleLogin) && ($.additionalEventData.MFAUsed != \"Yes\") && ($.responseElements.ConsoleLogin = \"Success\") }",
+      "metricTransformation": {
+        "metricNamespace": "Security/Authentication",
+        "metricName": "ConsoleLoginWithoutMFA",
+        "metricValue": "1",
+        "defaultValue": null,
+        "unit": "Count"
+      },
+      "alarmConfiguration": {
+        "alarmName": "ConsoleLoginWithoutMFAAlarm",
+        "alarmDescription": "Alert on console logins without MFA",
+        "statistic": "Sum",
+        "period": 300,
+        "evaluationPeriods": 1,
+        "threshold": 0,
+        "comparisonOperator": "GreaterThanThreshold",
+        "treatMissingData": "notBreaching"
+      }
+    },
+    {
+      "name": "EC2LargeInstanceLaunches",
+      "description": "Detects large EC2 instance launches (cost control)",
+      "filterPattern": "{ ($.eventName = RunInstances) && (($.requestParameters.instanceType = *.8xlarge) || ($.requestParameters.instanceType = *.16xlarge) || ($.requestParameters.instanceType = *.24xlarge)) }",
+      "metricTransformation": {
+        "metricNamespace": "Cost/Compute",
+        "metricName": "LargeInstanceLaunches",
+        "metricValue": "1",
+        "defaultValue": null,
+        "unit": "Count"
+      },
+      "alarmConfiguration": {
+        "alarmName": "LargeInstanceLaunchesAlarm",
+        "alarmDescription": "Alert on large EC2 instance launches",
+        "statistic": "Sum",
+        "period": 300,
+        "evaluationPeriods": 1,
+        "threshold": 0,
+        "comparisonOperator": "GreaterThanThreshold",
+        "treatMissingData": "notBreaching"
+      }
+    }
+  ],
+  "notes": {
+    "filterPatternSyntax": "CloudWatch Logs filter patterns use JSON property notation with $ prefix",
+    "wildcards": "Use * for wildcard matching in string values",
+    "logicalOperators": "Use && (AND), || (OR), and ! (NOT) for combining conditions",
+    "numericComparisons": "Supports =, !=, <, <=, >, >= for numeric values",
+    "existenceChecks": "Use 'EXISTS' or 'NOT EXISTS' to check field presence",
+    "defaultValue": "Leave null to only publish metric when pattern matches (recommended)",
+    "treatMissingData": "Options: notBreaching, breaching, ignore, missing"
+  },
+  "bestPractices": [
+    "Use specific filter patterns to reduce false positives",
+    "Set appropriate alarm thresholds based on normal activity baseline",
+    "Test filter patterns with CloudWatch Logs Insights before creating metric filters",
+    "Use custom namespaces to organize security metrics logically",
+    "Document alarm response procedures for security team",
+    "Review and tune alarms regularly to reduce alert fatigue",
+    "Consider using composite alarms for complex alerting logic"
+  ]
+}

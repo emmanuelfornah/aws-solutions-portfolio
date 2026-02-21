@@ -1,0 +1,33 @@
+{
+  "GroupName": "forensic-isolation-sg",
+  "Description": "Forensic isolation security group - blocks all traffic",
+  "VpcId": "vpc-12345",
+  "IpPermissions": [],
+  "IpPermissionsEgress": [],
+  "Tags": [
+    {
+      "Key": "Name",
+      "Value": "forensic-isolation-sg"
+    },
+    {
+      "Key": "Purpose",
+      "Value": "IncidentResponse"
+    },
+    {
+      "Key": "Description",
+      "Value": "Blocks all inbound and outbound traffic for forensic isolation"
+    }
+  ],
+  "Notes": {
+    "Purpose": "Used to isolate compromised instances during incident response",
+    "InboundRules": "NONE - All inbound traffic blocked",
+    "OutboundRules": "NONE - All outbound traffic blocked (default egress rule removed)",
+    "Usage": "Applied to instances automatically by Lambda during incident response",
+    "BestPractices": [
+      "Never attach to production instances manually",
+      "Only used for forensic isolation",
+      "Document all instances using this security group",
+      "Review regularly for orphaned instances"
+    ]
+  }
+}

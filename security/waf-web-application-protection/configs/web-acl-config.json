@@ -1,0 +1,14 @@
+{
+  "Name": "WebAppProtectionACL",
+  "Scope": "REGIONAL",
+  "DefaultAction": {
+    "Allow": {}
+  },
+  "Description": "Web ACL for protecting web application with managed rules, rate limiting, and geo-blocking",
+  "Rules": [],
+  "VisibilityConfig": {
+    "SampledRequestsEnabled": true,
+    "CloudWatchMetricsEnabled": true,
+    "MetricName": "WebAppProtectionACL"
+  }
+}

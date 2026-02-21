@@ -1,0 +1,137 @@
+{
+  "name": "ProductionGuardrail",
+  "description": "Enterprise AI safety and security controls",
+  "contentPolicyConfig": {
+    "filtersConfig": [
+      {
+        "type": "HATE",
+        "inputStrength": "HIGH",
+        "outputStrength": "HIGH"
+      },
+      {
+        "type": "VIOLENCE",
+        "inputStrength": "HIGH",
+        "outputStrength": "HIGH"
+      },
+      {
+        "type": "SEXUAL",
+        "inputStrength": "HIGH",
+        "outputStrength": "HIGH"
+      },
+      {
+        "type": "MISCONDUCT",
+        "inputStrength": "MEDIUM",
+        "outputStrength": "MEDIUM"
+      }
+    ]
+  },
+  "topicPolicyConfig": {
+    "topicsConfig": [
+      {
+        "name": "Financial Advice",
+        "definition": "Providing specific investment recommendations or financial advice",
+        "examples": [
+          "Should I invest in Bitcoin?",
+          "What stocks should I buy?",
+          "How should I allocate my 401k?"
+        ],
+        "type": "DENY"
+      },
+      {
+        "name": "Medical Advice",
+        "definition": "Providing specific medical diagnoses or treatment recommendations",
+        "examples": [
+          "Do I have cancer?",
+          "What medication should I take?",
+          "Should I have surgery?"
+        ],
+        "type": "DENY"
+      },
+      {
+        "name": "Legal Advice",
+        "definition": "Providing specific legal advice or recommendations",
+        "examples": [
+          "Should I sue my employer?",
+          "How do I file for bankruptcy?",
+          "What's the best way to avoid taxes?"
+        ],
+        "type": "DENY"
+      }
+    ]
+  },
+  "wordPolicyConfig": {
+    "wordsConfig": [
+      {
+        "text": "confidential"
+      },
+      {
+        "text": "internal only"
+      },
+      {
+        "text": "do not share"
+      },
+      {
+        "text": "proprietary"
+      }
+    ],
+    "managedWordListsConfig": [
+      {
+        "type": "PROFANITY"
+      }
+    ]
+  },
+  "sensitiveInformationPolicyConfig": {
+    "piiEntitiesConfig": [
+      {
+        "type": "EMAIL",
+        "action": "ANONYMIZE"
+      },
+      {
+        "type": "PHONE",
+        "action": "ANONYMIZE"
+      },
+      {
+        "type": "NAME",
+        "action": "ANONYMIZE"
+      },
+      {
+        "type": "ADDRESS",
+        "action": "ANONYMIZE"
+      },
+      {
+        "type": "PASSWORD",
+        "action": "BLOCK"
+      },
+      {
+        "type": "AWS_ACCESS_KEY",
+        "action": "BLOCK"
+      },
+      {
+        "type": "AWS_SECRET_KEY",
+        "action": "BLOCK"
+      },
+      {
+        "type": "CREDIT_DEBIT_CARD_NUMBER",
+        "action": "BLOCK"
+      },
+      {
+        "type": "US_SOCIAL_SECURITY_NUMBER",
+        "action": "BLOCK"
+      }
+    ]
+  },
+  "contextualGroundingPolicyConfig": {
+    "filtersConfig": [
+      {
+        "type": "GROUNDING",
+        "threshold": 0.75
+      },
+      {
+        "type": "RELEVANCE",
+        "threshold": 0.75
+      }
+    ]
+  },
+  "blockedInputMessaging": "I cannot process this request due to content policy restrictions. Please rephrase your question.",
+  "blockedOutputsMessaging": "I cannot provide this information due to content policy restrictions."
+}

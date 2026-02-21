@@ -1,0 +1,71 @@
+{
+  "apiName": "FlashcardGeneratorAPI",
+  "description": "REST API for AI-powered flashcard generation using Amazon Bedrock",
+  "resources": [
+    {
+      "path": "/generate-flashcards",
+      "methods": [
+        {
+          "httpMethod": "POST",
+          "integration": {
+            "type": "AWS_PROXY",
+            "integrationHttpMethod": "POST",
+            "uri": "arn:aws:apigateway:[REGION]:lambda:path/2015-03-31/functions/arn:aws:lambda:[REGION]:[ACCOUNT-ID]:function:FlashcardGeneratorFunction/invocations"
+          },
+          "requestParameters": {},
+          "requestModels": {
+            "application/json": {
+              "type": "object",
+              "properties": {
+                "notes": {
+                  "type": "string",
+                  "description": "Study notes to convert into flashcards"
+                }
+              },
+              "required": ["notes"]
+            }
+          }
+        },
+        {
+          "httpMethod": "OPTIONS",
+          "integration": {
+            "type": "MOCK",
+            "requestTemplates": {
+              "application/json": "{\"statusCode\": 200}"
+            },
+            "responses": {
+              "default": {
+                "statusCode": "200",
+                "responseParameters": {
+                  "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                  "method.response.header.Access-Control-Allow-Methods": "'POST,OPTIONS'",
+                  "method.response.header.Access-Control-Allow-Origin": "'*'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "cors": {
+    "allowOrigins": ["*"],
+    "allowMethods": ["POST", "OPTIONS"],
+    "allowHeaders": [
+      "Content-Type",
+      "X-Amz-Date",
+      "Authorization",
+      "X-Api-Key",
+      "X-Amz-Security-Token"
+    ],
+    "maxAge": 300
+  },
+  "deployment": {
+    "stageName": "prod",
+    "description": "Production deployment"
+  },
+  "throttling": {
+    "rateLimit": 100,
+    "burstLimit": 200
+  }
+}

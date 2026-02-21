@@ -1,0 +1,119 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'CloudFormation Intrinsic Functions Lab - Starter Template with TODOs'
+
+Parameters:
+  Environment:
+    Type: String
+    Default: Development
+    AllowedValues:
+      - Development
+      - Production
+    Description: Deployment environment (Development or Production)
+  
+  LatestAmiId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+    Description: Latest Amazon Linux 2 AMI ID from Systems Manager Parameter Store
+
+Mappings:
+  EnvironmentConfigMap:
+    Development:
+      InstanceType: t2.micro
+    Production:
+      InstanceType: t2.small
+
+Resources:
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow HTTP traffic to EC2 instance
+      # TODO: Implement !ImportValue to reference LabVPCId from infrastructure stack
+      VpcId: # YOUR CODE HERE
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+          Description: Allow HTTP from anywhere
+      Tags:
+        - Key: Name
+          Value: !Sub '${AWS::StackName}-SecurityGroup'
+        - Key: Environment
+          Value: !Ref Environment
+
+  LabInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      # TODO: Implement !Ref to reference the LatestAmiId parameter
+      ImageId: # YOUR CODE HERE
+      
+      # TODO: Implement !FindInMap to retrieve InstanceType from EnvironmentConfigMap
+      # based on the Environment parameter
+      InstanceType: # YOUR CODE HERE
+      
+      # TODO: Implement !ImportValue to reference PublicSubnetId from infrastructure stack
+      SubnetId: # YOUR CODE HERE
+      
+      # TODO: Implement !Ref to reference the InstanceSecurityGroup resource
+      SecurityGroupIds:
+        - # YOUR CODE HERE
+      
+      UserData:
+        # TODO: Implement !Sub for string substitution in the UserData script
+        # Replace ${Environment}, ${AWS::Region}, and ${AWS::StackName} with actual values
+        Fn::Base64: # YOUR CODE HERE - Use !Sub with the script below
+          # #!/bin/bash
+          # yum update -y
+          # yum install -y httpd
+          # systemctl start httpd
+          # systemctl enable httpd
+          # 
+          # cat > /var/www/html/index.html <<EOF
+          # <html>
+          # <head><title>CloudFormation Utilities Lab</title></head>
+          # <body>
+          #   <h1>CloudFormation Intrinsic Functions Demo</h1>
+          #   <p><strong>Environment:</strong> ${Environment}</p>
+          #   <p><strong>Instance ID:</strong> $(ec2-metadata --instance-id | cut -d " " -f 2)</p>
+          #   <p><strong>Availability Zone:</strong> $(ec2-metadata --availability-zone | cut -d " " -f 2)</p>
+          #   <p><strong>Region:</strong> ${AWS::Region}</p>
+          #   <p><strong>Stack Name:</strong> ${AWS::StackName}</p>
+          # </body>
+          # </html>
+          # EOF
+      Tags:
+        - Key: Name
+          Value: !Sub '${AWS::StackName}-Instance'
+        - Key: Environment
+          Value: !Ref Environment
+
+Outputs:
+  InstancePublicDNS:
+    Description: Public DNS name of the EC2 instance
+    # TODO: Implement !GetAtt to retrieve the PublicDnsName attribute from LabInstance
+    Value: # YOUR CODE HERE
+    Export:
+      Name: !Sub '${AWS::StackName}-InstanceDNS'
+  
+  WebsiteURL:
+    Description: URL of the deployed website
+    # TODO: Implement !Sub to construct the URL using the instance's PublicDnsName
+    # Format: http://${LabInstance.PublicDnsName}
+    Value: # YOUR CODE HERE
+  
+  InstanceId:
+    Description: EC2 Instance ID
+    Value: !Ref LabInstance
+  
+  SecurityGroupId:
+    Description: Security Group ID
+    Value: !Ref InstanceSecurityGroup
+  
+  EnvironmentType:
+    Description: Deployment environment type
+    Value: !Ref Environment
+  
+  InstanceType:
+    Description: EC2 instance type based on environment
+    # TODO: Implement !FindInMap to retrieve InstanceType from EnvironmentConfigMap
+    Value: # YOUR CODE HERE

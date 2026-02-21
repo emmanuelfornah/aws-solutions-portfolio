@@ -1,0 +1,23 @@
+{
+  "Name": "RateLimitRule",
+  "Priority": 1,
+  "Statement": {
+    "RateBasedStatement": {
+      "Limit": 2000,
+      "AggregateKeyType": "IP"
+    }
+  },
+  "Action": {
+    "Block": {
+      "CustomResponse": {
+        "ResponseCode": 429,
+        "CustomResponseBodyKey": "rate-limit-exceeded"
+      }
+    }
+  },
+  "VisibilityConfig": {
+    "SampledRequestsEnabled": true,
+    "CloudWatchMetricsEnabled": true,
+    "MetricName": "RateLimitRule"
+  }
+}

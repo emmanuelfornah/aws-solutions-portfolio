@@ -1,0 +1,64 @@
+# AppSpec file for AWS CodeDeploy
+# Defines how the application should be deployed to EC2 instances
+
+version: 0.0
+os: linux
+
+# Files to copy from the source to the destination
+files:
+  - source: /
+    destination: /var/www/html
+
+# Permissions for deployed files
+permissions:
+  - object: /var/www/html
+    owner: apache
+    group: apache
+    mode: 755
+    type:
+      - directory
+  - object: /var/www/html
+    owner: apache
+    group: apache
+    mode: 644
+    type:
+      - file
+
+# Deployment lifecycle hooks
+# These scripts run at specific points during the deployment process
+hooks:
+  # ApplicationStop runs before the application is stopped
+  ApplicationStop:
+    - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
+
+  # BeforeInstall runs before the application files are copied
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 300
+      runas: root
+
+  # AfterInstall runs after the application files are copied
+  AfterInstall:
+    - location: scripts/configure_application.sh
+      timeout: 300
+      runas: root
+
+  # ApplicationStart runs to start the application
+  ApplicationStart:
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: root
+
+  # ValidateService runs to verify the deployment was successful
+  ValidateService:
+    - location: scripts/validate_service.sh
+      timeout: 300
+      runas: root
+
+# Blue/Green Deployment Notes:
+# - ApplicationStop runs on BLUE instances before they are deregistered
+# - BeforeInstall, AfterInstall, ApplicationStart, ValidateService run on GREEN instances
+# - If ValidateService fails, the deployment is rolled back
+# - Traffic is only rerouted after ValidateService succeeds

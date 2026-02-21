@@ -1,0 +1,12 @@
+{
+  "orderId": "550e8400-e29b-41d4-a716-446655440000",
+  "pizzaType": "Margherita",
+  "size": "Large",
+  "toppings": [
+    "basil",
+    "mozzarella",
+    "tomato sauce"
+  ],
+  "timestamp": "2024-01-15T10:30:00Z",
+  "status": "RECEIVED"
+}

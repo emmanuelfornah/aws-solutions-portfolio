@@ -1,0 +1,49 @@
+# Apache HTTP Server Configuration Snippet for WordPress
+# Add this to /etc/httpd/conf/httpd.conf or create a new virtual host file
+
+<VirtualHost *:80>
+    ServerAdmin admin@example.com
+    DocumentRoot /var/www/html
+    ServerName example.com
+    ServerAlias www.example.com
+
+    <Directory /var/www/html>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog /var/log/httpd/wordpress_error.log
+    CustomLog /var/log/httpd/wordpress_access.log combined
+</VirtualHost>
+
+# SSL/TLS Configuration (Port 443)
+# Uncomment and configure after obtaining SSL certificate
+
+# <VirtualHost *:443>
+#     ServerAdmin admin@example.com
+#     DocumentRoot /var/www/html
+#     ServerName example.com
+#     ServerAlias www.example.com
+#
+#     SSLEngine on
+#     SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+#     SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+#
+#     <Directory /var/www/html>
+#         Options Indexes FollowSymLinks
+#         AllowOverride All
+#         Require all granted
+#     </Directory>
+#
+#     ErrorLog /var/log/httpd/wordpress_ssl_error.log
+#     CustomLog /var/log/httpd/wordpress_ssl_access.log combined
+# </VirtualHost>
+
+# Generate self-signed certificate for testing:
+# sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+#   -keyout /etc/pki/tls/private/localhost.key \
+#   -out /etc/pki/tls/certs/localhost.crt
+
+# After configuration changes, restart Apache:
+# sudo systemctl restart httpd

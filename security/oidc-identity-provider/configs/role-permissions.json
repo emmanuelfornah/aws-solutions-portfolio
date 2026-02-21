@@ -1,0 +1,54 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListBuckets",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": "arn:aws:s3:::federated-user-data-*"
+    },
+    {
+      "Sid": "UserSpecificAccess",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::federated-user-data-*/${aws:userid}/*",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": "${aws:userid}/*"
+        }
+      }
+    },
+    {
+      "Sid": "CloudWatchLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:log-group:/aws/federated-users/*"
+    }
+  ],
+  "Description": "Permissions policy for federated users with user-specific data isolation",
+  "Notes": {
+    "UserIsolation": "Uses ${aws:userid} policy variable to isolate user data",
+    "PolicyVariables": {
+      "aws:userid": "Unique identifier for the assumed role session (AROAID:session-name)",
+      "aws:username": "Friendly name of the user",
+      "aws:PrincipalTag": "Tags from the role session"
+    },
+    "BestPractices": [
+      "Use least privilege - grant only necessary permissions",
+      "Implement data isolation using policy variables",
+      "Use resource-based policies for additional security",
+      "Regular audit of permissions and access patterns"
+    ]
+  }
+}

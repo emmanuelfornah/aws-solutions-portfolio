@@ -1,0 +1,48 @@
+version: 0.2
+
+# CodeBuild build specification for CloudFormation template validation
+# This buildspec validates infrastructure templates before deployment
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo "Installing CloudFormation linter..."
+      - pip install cfn-lint
+      - echo "cfn-lint version:"
+      - cfn-lint --version
+  
+  pre_build:
+    commands:
+      - echo "Pre-build phase started on $(date)"
+      - echo "Listing files in source directory..."
+      - ls -la
+  
+  build:
+    commands:
+      - echo "Build phase started on $(date)"
+      - echo "Validating CloudFormation template with cfn-lint..."
+      - cfn-lint infrastructure.yml --format parseable
+      - echo "Template validation successful!"
+      - echo "Checking for security best practices..."
+      - |
+        if grep -q "0.0.0.0/0" infrastructure.yml && grep -q "FromPort: 22" infrastructure.yml; then
+          echo "WARNING: SSH port 22 appears to be open to 0.0.0.0/0"
+          echo "This is a security risk and should be addressed"
+        fi
+  
+  post_build:
+    commands:
+      - echo "Post-build phase started on $(date)"
+      - echo "Build completed successfully"
+
+artifacts:
+  files:
+    - infrastructure.yml
+  name: InfrastructureArtifact
+  discard-paths: no
+
+cache:
+  paths:
+    - '/root/.cache/pip/**/*'

@@ -1,0 +1,4 @@
+{
+  "source": ["pizza.kitchen"],
+  "detail-type": ["Order Status Update"]
+}

@@ -1,0 +1,7 @@
+{
+  "LifecyclePolicies": [
+    {
+      "TransitionToIA": "AFTER_30_DAYS"
+    }
+  ]
+}

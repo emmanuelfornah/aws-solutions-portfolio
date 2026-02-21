@@ -1,0 +1,143 @@
+{
+  "Comment": "Trivia Game Workflow - Orchestrates multi-step trivia game with questions, answers, and scoring",
+  "StartAt": "InitializeGame",
+  "States": {
+    "InitializeGame": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:InitializeGame",
+      "Comment": "Set up game session with player info and initial state",
+      "ResultPath": "$.gameState",
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.error",
+          "Next": "GameInitializationFailed"
+        }
+      ],
+      "Next": "AskQuestion"
+    },
+    "AskQuestion": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:AskQuestion",
+      "Comment": "Retrieve and present next trivia question",
+      "ResultPath": "$.currentQuestion",
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "NotifyPlayerWebSocket"
+    },
+    "NotifyPlayerWebSocket": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:NotifyPlayer",
+      "Comment": "Send question to player via WebSocket",
+      "ResultPath": "$.notificationResult",
+      "Next": "WaitForAnswer"
+    },
+    "WaitForAnswer": {
+      "Type": "Wait",
+      "Seconds": 30,
+      "Comment": "Give player 30 seconds to answer",
+      "Next": "CheckAnswer"
+    },
+    "CheckAnswer": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:CheckAnswer",
+      "Comment": "Validate player's answer and update score",
+      "ResultPath": "$.answerResult",
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "UpdateGameState"
+    },
+    "UpdateGameState": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:UpdateGameState",
+      "Comment": "Save answer result and update game progress",
+      "ResultPath": "$.gameState",
+      "Next": "MoreQuestions"
+    },
+    "MoreQuestions": {
+      "Type": "Choice",
+      "Comment": "Check if there are more questions to ask",
+      "Choices": [
+        {
+          "Variable": "$.gameState.questionNumber",
+          "NumericLessThan": 10,
+          "Next": "AskQuestion"
+        },
+        {
+          "Variable": "$.gameState.questionNumber",
+          "NumericGreaterThanEquals": 10,
+          "Next": "EndGame"
+        }
+      ],
+      "Default": "EndGame"
+    },
+    "EndGame": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:EndGame",
+      "Comment": "Calculate final score and save game results",
+      "ResultPath": "$.finalResults",
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "NotifyFinalScore"
+    },
+    "NotifyFinalScore": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:NotifyPlayer",
+      "Comment": "Send final score to player",
+      "ResultPath": "$.notificationResult",
+      "Next": "GameCompleted"
+    },
+    "GameCompleted": {
+      "Type": "Succeed",
+      "Comment": "Game completed successfully"
+    },
+    "GameInitializationFailed": {
+      "Type": "Fail",
+      "Comment": "Failed to initialize game",
+      "Cause": "Game initialization error",
+      "Error": "InitializationError"
+    }
+  }
+}

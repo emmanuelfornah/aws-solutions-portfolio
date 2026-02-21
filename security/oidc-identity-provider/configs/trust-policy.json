@@ -1,0 +1,41 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::123456789012:oidc-provider/auth.provider.com"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "auth.provider.com:aud": "your-client-id"
+        },
+        "StringLike": {
+          "auth.provider.com:sub": "*"
+        }
+      }
+    }
+  ],
+  "Description": "Trust policy for IAM role with web identity federation",
+  "Notes": {
+    "Principal": "Federated principal must match the OIDC provider ARN",
+    "Condition": {
+      "aud": "Audience claim must match the client ID registered with the provider",
+      "sub": "Subject claim identifies the user; use StringLike for pattern matching",
+      "iss": "Issuer is automatically validated against the provider URL"
+    },
+    "AdditionalConditions": {
+      "EmailVerified": {
+        "StringEquals": {
+          "auth.provider.com:email_verified": "true"
+        }
+      },
+      "SpecificUsers": {
+        "StringEquals": {
+          "auth.provider.com:sub": "auth0|5f8e9a1b2c3d4e5f6a7b8c9d"
+        }
+      }
+    }
+  }
+}

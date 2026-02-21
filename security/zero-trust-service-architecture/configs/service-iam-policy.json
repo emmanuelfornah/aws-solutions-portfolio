@@ -1,0 +1,38 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "InvokeSpecificAPIMethods",
+      "Effect": "Allow",
+      "Action": "execute-api:Invoke",
+      "Resource": [
+        "arn:aws:execute-api:us-east-1:123456789012:api-id/prod/GET/users",
+        "arn:aws:execute-api:us-east-1:123456789012:api-id/prod/POST/users",
+        "arn:aws:execute-api:us-east-1:123456789012:api-id/prod/GET/users/*"
+      ]
+    },
+    {
+      "Sid": "DenyOtherAPIMethods",
+      "Effect": "Deny",
+      "Action": "execute-api:Invoke",
+      "NotResource": [
+        "arn:aws:execute-api:us-east-1:123456789012:api-id/prod/GET/users",
+        "arn:aws:execute-api:us-east-1:123456789012:api-id/prod/POST/users",
+        "arn:aws:execute-api:us-east-1:123456789012:api-id/prod/GET/users/*"
+      ]
+    }
+  ],
+  "Description": "Least privilege IAM policy for service-to-service communication",
+  "Notes": {
+    "LeastPrivilege": "Grants access only to specific API methods needed",
+    "ResourceFormat": "arn:aws:execute-api:region:account:api-id/stage/method/path",
+    "Wildcards": "Use /* for path parameters, but be specific about methods",
+    "ExplicitDeny": "Denies access to all other API methods",
+    "ZeroTrustAlignment": [
+      "Minimal permissions",
+      "Explicit authorization",
+      "Method-level granularity",
+      "Regular permission reviews"
+    ]
+  }
+}

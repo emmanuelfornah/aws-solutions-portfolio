@@ -1,0 +1,32 @@
+{
+  "BackupPlanName": "RDS-Daily-Backup",
+  "BackupPlanRule": {
+    "RuleName": "DailyBackup",
+    "TargetBackupVaultName": "Default",
+    "ScheduleExpression": "cron(0 3 * * ? *)",
+    "StartWindowMinutes": 60,
+    "CompletionWindowMinutes": 120,
+    "Lifecycle": {
+      "DeleteAfterDays": 30,
+      "MoveToColdStorageAfterDays": 7
+    },
+    "RecoveryPointTags": {
+      "BackupType": "Automated",
+      "Environment": "Production"
+    }
+  },
+  "BackupSelection": {
+    "SelectionName": "RDS-MySQL-Selection",
+    "IamRoleArn": "arn:aws:iam::[ACCOUNT-ID]:role/AWSBackupDefaultServiceRole",
+    "Resources": [
+      "arn:aws:rds:us-east-1:[ACCOUNT-ID]:db:mydb"
+    ],
+    "ListOfTags": [
+      {
+        "ConditionType": "STRINGEQUALS",
+        "ConditionKey": "Environment",
+        "ConditionValue": "Production"
+      }
+    ]
+  }
+}

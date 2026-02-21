@@ -1,0 +1,215 @@
+# Apache HTTP Server Configuration Snippet for WordPress
+# Add these configurations to /etc/httpd/conf/httpd.conf or create a separate
+# configuration file in /etc/httpd/conf.d/wordpress.conf
+
+# ============================================================================
+# Virtual Host Configuration for HTTP (Port 80)
+# ============================================================================
+
+<VirtualHost *:80>
+    # Server identification
+    ServerAdmin admin@example.com
+    ServerName wordpress.local
+    ServerAlias www.wordpress.local
+    
+    # Document root - WordPress installation directory
+    DocumentRoot /var/www/html
+    
+    # Directory permissions and options
+    <Directory /var/www/html>
+        # Allow .htaccess overrides for WordPress permalinks
+        AllowOverride All
+        
+        # Access control
+        Require all granted
+        
+        # Directory index files
+        DirectoryIndex index.php index.html
+        
+        # Enable FollowSymLinks for WordPress
+        Options FollowSymLinks
+    </Directory>
+    
+    # Logging
+    ErrorLog /var/log/httpd/wordpress_error.log
+    CustomLog /var/log/httpd/wordpress_access.log combined
+    
+    # PHP configuration
+    <FilesMatch \.php$>
+        SetHandler "proxy:unix:/run/php-fpm/www.sock|fcgi://localhost"
+    </FilesMatch>
+</VirtualHost>
+
+# ============================================================================
+# Security Headers for HTTP
+# ============================================================================
+
+<IfModule mod_headers.c>
+    # Prevent clickjacking attacks
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ============================================================================
+# WordPress Permalink Support
+# ============================================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # WordPress permalink rules
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+</IfModule>
+
+# ============================================================================
+# File Upload Limits
+# ============================================================================
+
+# Increase PHP upload limits for WordPress media
+<IfModule mod_php.c>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 64M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# ============================================================================
+# Compression for Better Performance
+# ============================================================================
+
+<IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, Text, XML and fonts
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE application/x-font
+    AddOutputFilterByType DEFLATE application/x-font-opentype
+    AddOutputFilterByType DEFLATE application/x-font-otf
+    AddOutputFilterByType DEFLATE application/x-font-truetype
+    AddOutputFilterByType DEFLATE application/x-font-ttf
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE font/opentype
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE image/x-icon
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+</IfModule>
+
+# ============================================================================
+# Browser Caching for Static Assets
+# ============================================================================
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # Fonts
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    
+    # Default
+    ExpiresDefault "access plus 2 days"
+</IfModule>
+
+# ============================================================================
+# Security: Protect WordPress Configuration Files
+# ============================================================================
+
+# Deny access to wp-config.php
+<Files wp-config.php>
+    Require all denied
+</Files>
+
+# Deny access to .htaccess and .htpasswd files
+<FilesMatch "^\.ht">
+    Require all denied
+</FilesMatch>
+
+# Deny access to readme.html and license.txt
+<FilesMatch "(readme|license)\.(html|txt)">
+    Require all denied
+</FilesMatch>
+
+# Deny access to WordPress installation files
+<FilesMatch "^(wp-config-sample|install|upgrade)\.php$">
+    Require all denied
+</FilesMatch>
+
+# ============================================================================
+# Disable Directory Browsing
+# ============================================================================
+
+Options -Indexes
+
+# ============================================================================
+# Limit XML-RPC Access (Prevent Brute Force Attacks)
+# ============================================================================
+
+# Uncomment to completely disable XML-RPC
+# <Files xmlrpc.php>
+#     Require all denied
+# </Files>
+
+# Or limit XML-RPC to specific IPs
+# <Files xmlrpc.php>
+#     Require ip 10.0.0.0/8
+# </Files>
+
+# ============================================================================
+# Notes for Implementation
+# ============================================================================
+
+# 1. To apply these settings, either:
+#    - Add them to /etc/httpd/conf/httpd.conf
+#    - Create /etc/httpd/conf.d/wordpress.conf and paste these settings
+#
+# 2. Required Apache modules (enable with 'sudo dnf install'):
+#    - mod_rewrite (for permalinks)
+#    - mod_headers (for security headers)
+#    - mod_deflate (for compression)
+#    - mod_expires (for caching)
+#
+# 3. After making changes, test configuration:
+#    sudo apachectl configtest
+#
+# 4. Restart Apache to apply changes:
+#    sudo systemctl restart httpd
+#
+# 5. For production use:
+#    - Update ServerName and ServerAlias with your actual domain
+#    - Update ServerAdmin with your email address
+#    - Consider using separate log files per virtual host
+#    - Enable HTTPS and redirect HTTP to HTTPS

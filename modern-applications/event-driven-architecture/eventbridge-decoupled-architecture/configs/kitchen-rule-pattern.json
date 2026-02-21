@@ -1,0 +1,7 @@
+{
+  "source": ["pizza.orders"],
+  "detail-type": ["Order Placed"],
+  "detail": {
+    "status": ["RECEIVED"]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "TopicConfigurations": [
+    {
+      "Id": "ImageUploadNotification",
+      "TopicArn": "arn:aws:sns:REGION:ACCOUNT_ID:ImageProcessingTopic",
+      "Events": [
+        "s3:ObjectCreated:*"
+      ],
+      "Filter": {
+        "Key": {
+          "FilterRules": [
+            {
+              "Name": "suffix",
+              "Value": ".jpg"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "Id": "PNGUploadNotification",
+      "TopicArn": "arn:aws:sns:REGION:ACCOUNT_ID:ImageProcessingTopic",
+      "Events": [
+        "s3:ObjectCreated:*"
+      ],
+      "Filter": {
+        "Key": {
+          "FilterRules": [
+            {
+              "Name": "suffix",
+              "Value": ".png"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

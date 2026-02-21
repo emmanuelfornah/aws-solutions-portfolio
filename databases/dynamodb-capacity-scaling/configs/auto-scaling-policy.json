@@ -1,0 +1,17 @@
+{
+  "ServiceNamespace": "dynamodb",
+  "ResourceId": "table/Users",
+  "ScalableDimension": "dynamodb:table:ReadCapacityUnits",
+  "PolicyName": "Users-read-capacity-scaling-policy",
+  "PolicyType": "TargetTrackingScaling",
+  "TargetTrackingScalingPolicyConfiguration": {
+    "TargetValue": 70.0,
+    "PredefinedMetricSpecification": {
+      "PredefinedMetricType": "DynamoDBReadCapacityUtilization"
+    },
+    "ScaleOutCooldown": 60,
+    "ScaleInCooldown": 60
+  },
+  "MinCapacity": 5,
+  "MaxCapacity": 100
+}

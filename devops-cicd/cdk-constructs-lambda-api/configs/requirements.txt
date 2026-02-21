@@ -1,0 +1,24 @@
+# AWS CDK Core Library
+# Provides the core CDK framework and all AWS service constructs
+aws-cdk-lib==2.100.0
+
+# CDK Constructs Library
+# Base library for creating custom constructs
+constructs>=10.0.0,<11.0.0
+
+# Testing Dependencies
+# pytest: Testing framework for Python
+pytest==7.4.3
+
+# pytest-cov: Code coverage plugin for pytest
+pytest-cov==4.1.0
+
+# Development Dependencies (optional)
+# black: Code formatter
+# black==23.11.0
+
+# flake8: Linting tool
+# flake8==6.1.0
+
+# mypy: Static type checker
+# mypy==1.7.1

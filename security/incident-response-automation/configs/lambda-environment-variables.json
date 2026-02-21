@@ -1,0 +1,17 @@
+{
+  "Variables": {
+    "EVIDENCE_BUCKET": "incident-response-evidence-123456789012",
+    "SNS_TOPIC_ARN": "arn:aws:sns:us-east-1:123456789012:SecurityIncidentAlerts",
+    "ISOLATION_SECURITY_GROUP": "sg-0123456789abcdef0",
+    "FORENSIC_ACCOUNT_ID": "987654321098",
+    "LOG_LEVEL": "INFO"
+  },
+  "Description": "Environment variables for incident response Lambda functions",
+  "Notes": {
+    "EVIDENCE_BUCKET": "S3 bucket for storing forensic evidence and metadata",
+    "SNS_TOPIC_ARN": "SNS topic for incident notifications",
+    "ISOLATION_SECURITY_GROUP": "Security group ID that blocks all traffic",
+    "FORENSIC_ACCOUNT_ID": "Separate AWS account for forensic analysis",
+    "LOG_LEVEL": "Logging level (DEBUG, INFO, WARNING, ERROR)"
+  }
+}

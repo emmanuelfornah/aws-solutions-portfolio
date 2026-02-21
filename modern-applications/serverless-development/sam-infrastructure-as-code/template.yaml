@@ -1,0 +1,184 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Customer Management API - Serverless Application
+
+Globals:
+  Function:
+    Timeout: 10
+    Runtime: python3.11
+    MemorySize: 256
+    Environment:
+      Variables:
+        TABLE_NAME: !Ref CustomersTable
+        LOG_LEVEL: INFO
+
+Parameters:
+  Environment:
+    Type: String
+    Default: dev
+    AllowedValues:
+      - dev
+      - staging
+      - prod
+    Description: Deployment environment
+
+Resources:
+  # HTTP API
+  CustomerApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: !Ref Environment
+      CorsConfiguration:
+        AllowOrigins:
+          - "*"
+        AllowMethods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+        AllowHeaders:
+          - "*"
+        MaxAge: 300
+      AccessLogSettings:
+        DestinationArn: !GetAtt ApiAccessLogs.Arn
+        Format: '$context.requestId $context.error.message $context.error.messageString'
+
+  # CloudWatch Log Group for API Access Logs
+  ApiAccessLogs:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/apigateway/${AWS::StackName}'
+      RetentionInDays: 7
+
+  # Lambda Function: List Customers
+  ListCustomersFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/list_customers/
+      Handler: app.lambda_handler
+      Description: Retrieve all customers from DynamoDB
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref CustomersTable
+      Events:
+        ListCustomers:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref CustomerApi
+            Path: /customers
+            Method: GET
+
+  # Lambda Function: Get Customer by ID
+  GetCustomerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/get_customer/
+      Handler: app.lambda_handler
+      Description: Retrieve a single customer by ID
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref CustomersTable
+      Events:
+        GetCustomer:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref CustomerApi
+            Path: /customers/{customerId}
+            Method: GET
+
+  # Lambda Function: Save Customer
+  SaveCustomerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/save_customer/
+      Handler: app.lambda_handler
+      Description: Create a new customer
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CustomersTable
+      Events:
+        SaveCustomer:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref CustomerApi
+            Path: /customers
+            Method: POST
+
+  # Lambda Function: Update Customer
+  UpdateCustomerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/update_customer/
+      Handler: app.lambda_handler
+      Description: Update an existing customer
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CustomersTable
+      Events:
+        UpdateCustomer:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref CustomerApi
+            Path: /customers/{customerId}
+            Method: PUT
+
+  # Lambda Function: Delete Customer
+  DeleteCustomerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/delete_customer/
+      Handler: app.lambda_handler
+      Description: Delete a customer
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CustomersTable
+      Events:
+        DeleteCustomer:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref CustomerApi
+            Path: /customers/{customerId}
+            Method: DELETE
+
+  # DynamoDB Table
+  CustomersTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: customerId
+        Type: String
+      TableName: !Sub 'Customers-${Environment}'
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      Tags:
+        Environment: !Ref Environment
+        Application: CustomerAPI
+
+Outputs:
+  ApiEndpoint:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${CustomerApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/"
+    Export:
+      Name: !Sub "${AWS::StackName}-ApiEndpoint"
+  
+  CustomersTableName:
+    Description: "DynamoDB table name"
+    Value: !Ref CustomersTable
+    Export:
+      Name: !Sub "${AWS::StackName}-TableName"
+  
+  CustomersTableArn:
+    Description: "DynamoDB table ARN"
+    Value: !GetAtt CustomersTable.Arn
+    Export:
+      Name: !Sub "${AWS::StackName}-TableArn"
+  
+  ListCustomersFunctionArn:
+    Description: "List Customers Lambda Function ARN"
+    Value: !GetAtt ListCustomersFunction.Arn
+  
+  SaveCustomersFunctionArn:
+    Description: "Save Customer Lambda Function ARN"
+    Value: !GetAtt SaveCustomerFunction.Arn

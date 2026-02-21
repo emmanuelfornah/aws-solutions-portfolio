@@ -1,0 +1,95 @@
+{
+  "applicationName": "presidents-app",
+  "deploymentGroupName": "presidents-deployment-group-bg",
+  "deploymentConfigName": "CodeDeployDefault.AllAtOnce",
+  "serviceRoleArn": "arn:aws:iam::123456789012:role/CodeDeployServiceRole",
+  
+  "deploymentStyle": {
+    "deploymentType": "BLUE_GREEN",
+    "deploymentOption": "WITH_TRAFFIC_CONTROL"
+  },
+  
+  "blueGreenDeploymentConfiguration": {
+    "terminateBlueInstancesOnDeploymentSuccess": {
+      "action": "TERMINATE",
+      "terminationWaitTimeInMinutes": 60
+    },
+    "deploymentReadyOption": {
+      "actionOnTimeout": "STOP_DEPLOYMENT",
+      "waitTimeInMinutes": 60
+    },
+    "greenFleetProvisioningOption": {
+      "action": "COPY_AUTO_SCALING_GROUP"
+    }
+  },
+  
+  "loadBalancerInfo": {
+    "targetGroupInfoList": [
+      {
+        "name": "presidents-target-group"
+      }
+    ]
+  },
+  
+  "autoScalingGroups": [
+    {
+      "name": "presidents-auto-scaling-group"
+    }
+  ],
+  
+  "ec2TagFilters": [],
+  
+  "autoRollbackConfiguration": {
+    "enabled": true,
+    "events": [
+      "DEPLOYMENT_FAILURE",
+      "DEPLOYMENT_STOP_ON_ALARM"
+    ]
+  },
+  
+  "alarmConfiguration": {
+    "enabled": false,
+    "alarms": []
+  },
+  
+  "_comments": {
+    "deploymentType": "BLUE_GREEN creates a parallel environment instead of updating in-place",
+    "deploymentOption": "WITH_TRAFFIC_CONTROL uses load balancer to route traffic",
+    "terminateBlueInstancesOnDeploymentSuccess": "Automatically terminate old instances after 60 minutes",
+    "deploymentReadyOption": "Wait up to 60 minutes for manual traffic rerouting, then stop deployment",
+    "greenFleetProvisioningOption": "COPY_AUTO_SCALING_GROUP creates new instances matching the blue environment",
+    "deploymentConfigName": "CodeDeployDefault.AllAtOnce deploys to all instances simultaneously",
+    "autoRollbackConfiguration": "Automatically rollback on deployment failure or CloudWatch alarms",
+    
+    "alternative_deployment_configs": {
+      "CodeDeployDefault.AllAtOnce": "Deploy to all instances simultaneously",
+      "CodeDeployDefault.HalfAtATime": "Deploy to 50% of instances at a time",
+      "CodeDeployDefault.OneAtATime": "Deploy to one instance at a time"
+    },
+    
+    "alternative_traffic_rerouting": {
+      "manual": {
+        "actionOnTimeout": "STOP_DEPLOYMENT",
+        "waitTimeInMinutes": 60
+      },
+      "automatic": {
+        "actionOnTimeout": "CONTINUE_DEPLOYMENT",
+        "waitTimeInMinutes": 0
+      }
+    },
+    
+    "alternative_termination_options": {
+      "terminate_immediately": {
+        "action": "TERMINATE",
+        "terminationWaitTimeInMinutes": 0
+      },
+      "terminate_after_1_hour": {
+        "action": "TERMINATE",
+        "terminationWaitTimeInMinutes": 60
+      },
+      "keep_alive": {
+        "action": "KEEP_ALIVE"
+      }
+    }
+  }
+}
