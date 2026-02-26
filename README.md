@@ -79,7 +79,7 @@ AWS Cloud Institute Graduate | Cloud Application Developer
 ### Contact
 📧 Email: emmanuelfornah82@gmail.com  
 💼 LinkedIn: [Connect with me](https://www.linkedin.com/in/emmanuelfornah82)  
-🐙 GitHub: [@emmanuelfornah82](https://github.com/emmanuelfornah82)
+🐙 GitHub: [@emmanuelfornah](https://github.com/emmanuelfornah)
 
 ---
 
