@@ -1,10 +1,10 @@
-# AWS Labs Portfolio
+# AWS Cloud Institute Portfolio
 
-A professional portfolio showcasing hands-on AWS Cloud Fundamentals lab projects, organized by service domain and demonstrating practical cloud computing skills.
+A comprehensive portfolio showcasing hands-on labs from the AWS Cloud Institute's Cloud Application Developer program - a rigorous 9-month training featuring 9 courses, 150+ interactive labs, and 2 capstone projects.
 
 ## Overview
 
-This portfolio contains labs from AWS Cloud Fundamentals and AI for Developers courses, organized into domain categories to showcase technical breadth and depth across AWS services. Featured collections include **AI/ML Applications** (8 labs on generative AI, foundation models, and LangChain) and **Modern Applications** (7 labs on event-driven architecture and serverless development) - essential skills for modern cloud developers and architects.
+This repository documents my learning journey through the AWS Cloud Institute, featuring labs from AWS Cloud Fundamentals, AI for Developers, Developer Intermediate, and Cloud Operations courses. The portfolio is organized by service domain to demonstrate technical breadth across AWS services, with featured collections in **AI/ML Applications** (8 labs) and **Modern Applications** (7 labs) - critical skills for cloud developer and architect roles.
 
 ## Domain Categories
 
@@ -30,6 +30,18 @@ This portfolio contains labs from AWS Cloud Fundamentals and AI for Developers c
 - [DevOps/CI-CD](./devops-cicd/) - CodePipeline, CloudFormation, CDK
 - [Monitoring](./monitoring/) - CloudWatch, Auto Scaling
 
+## Prepared for In-Demand Cloud Roles
+
+This portfolio demonstrates skills across the 5 key cloud roles targeted by AWS Cloud Institute:
+
+| Role | Relevant Portfolio Domains |
+|------|---------------------------|
+| **Cloud Application Developer** | AI/ML Applications, Modern Applications, Compute (Lambda, Elastic Beanstalk), Databases (DynamoDB), DevOps/CI-CD (SAM, CDK) |
+| **DevOps Engineer** | DevOps/CI-CD (CodePipeline, CloudFormation, CDK), Compute (Containers, ECS, EKS), Monitoring (CloudWatch, X-Ray), Security (IAM, Inspector) |
+| **Cloud Engineer** | Compute (EC2, Lambda), Storage (S3, EBS, EFS), Networking (VPC, CloudFront), Databases (RDS, DynamoDB), Security |
+| **Cloud Administrator** | Security (IAM, WAF, KMS), Monitoring (CloudWatch, Auto Scaling), Databases (Backup strategies), Networking (VPC, Load Balancing) |
+| **Cloud Support Engineer** | All domains - Troubleshooting across Compute, Storage, Databases, Networking, Security, and Monitoring |
+
 ## Navigation
 
 - [Learning Journey](./LEARNING_JOURNEY.md) - Chronological progression through labs
@@ -37,13 +49,47 @@ This portfolio contains labs from AWS Cloud Fundamentals and AI for Developers c
 
 ## About This Portfolio
 
-This portfolio demonstrates practical AWS experience through hands-on lab projects. Each lab includes:
+This portfolio represents a selection of documented labs from the AWS Cloud Institute's 150+ hands-on exercises. The program included:
 
-- Detailed documentation and architecture overviews
-- Custom scripts and configurations
-- Key learnings and troubleshooting insights
-- Real-world applications and best practices
+- **9 digital training courses** across cloud foundations, development, operations, and AI
+- **150+ interactive labs** covering the full AWS service ecosystem
+- **2 capstone projects** (maintained in separate repositories)
+- **3 AWS certification preparations** (Cloud Practitioner, AI Practitioner, Developer Associate)
 
-## Contact
+Each documented lab includes:
+- Architecture diagrams and technical documentation
+- Custom scripts, configurations, and infrastructure-as-code
+- Implementation insights and troubleshooting notes
+- Real-world application patterns and best practices
 
-[Add your contact information and professional profile links here]
+## About Me
+
+**Emmanuel Fornah**  
+AWS Cloud Institute Graduate | Cloud Application Developer
+
+### Education & Certifications
+- **MS in Cloud Computing** - University of Maryland Global Campus (Expected Dec 2026) | 4.0 GPA
+- **AWS Cloud Institute** - Cloud Application Developer (Graduate)
+- **AWS Certified AI Practitioner**
+- **AWS Certified Cloud Practitioner**
+- **HashiCorp Terraform Associate**
+- **AWS Cloud Application Developer Certification**
+- **In Progress**: Linux Foundation Certified System Administrator (LFCS), Certified Kubernetes Administrator (CKA)
+
+### Contact
+📧 Email: emmanuelfornah82@gmail.com  
+💼 LinkedIn: [Connect with me](https://www.linkedin.com/in/emmanuelfornah82)  
+🐙 GitHub: [@emmanuelfornah82](https://github.com/emmanuelfornah82)
+
+---
+
+## Coming Soon
+
+Multi-platform DevOps projects featuring:
+- Jenkins CI/CD pipelines
+- Terraform infrastructure automation
+- Ansible configuration management
+- Prometheus & Grafana monitoring
+- Multi-cloud deployments
+
+**Note**: AWS Cloud Institute capstone projects are maintained in separate repositories.
