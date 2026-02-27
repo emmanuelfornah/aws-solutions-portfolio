@@ -48,3 +48,37 @@ config
 *.tmp
 *.log
 .DS_Store
+
+# Kiro workspace files
+.kiro/
+
+# Migration and reorganization files
+.migration/
+portfolio_reorganizer/
+reorganize_portfolio.py
+execute_full_reorganization.py
+migrate_labs.py
+migrate_all_labs.bat
+migrate_labs.sh
+migrate_with_powershell.ps1
+migration_commands.txt
+copy_labs_to_pillars.py
+run_analysis.bat
+run_copy_labs.bat
+run_full_reorganization.bat
+run_migration.bat
+pyproject.toml
+
+# Old service domain folders (now empty after reorganization)
+ai-ml-applications/
+aws_labs_portfolio/
+aws-labs-portfolio/
+compute/
+databases/
+devops-cicd/
+modern-applications/
+monitoring/
+networking/
+storage/
+templates/
+tests/
