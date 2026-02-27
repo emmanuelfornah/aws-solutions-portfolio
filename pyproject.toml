@@ -1,18 +1,29 @@
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_system"
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
-name = "aws-labs-portfolio"
+name = "portfolio-reorganizer"
 version = "0.1.0"
-description = "Transform AWS lab materials into a professional GitHub portfolio"
-requires-python = ">=3.10"
-dependencies = []
+description = "AWS Well-Architected Portfolio Reorganization Tool"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    {name = "Emmanuel Fornah", email = "emmanuelfornah82@gmail.com"}
+]
+dependencies = [
+    "hypothesis>=6.0.0",
+    "pytest>=7.0.0",
+    "gitpython>=3.1.0",
+    "pydantic>=2.0.0",
+]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.4.0",
-    "hypothesis>=6.82.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
 ]
 
 [tool.pytest.ini_options]
@@ -20,3 +31,14 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+addopts = "--verbose --cov=portfolio_reorganizer --cov-report=term-missing"
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
