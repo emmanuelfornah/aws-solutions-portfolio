@@ -10,7 +10,7 @@ The Reliability pillar focuses on workloads performing their intended functions 
 - Stop guessing capacity
 - Manage change through automation
 
-## Projects (4)
+## Projects (8)
 
 ### [Dms Database Migration](dms-database-migration/)
 
@@ -25,6 +25,38 @@ Database failures cause extended downtime and potential data loss
 Data loss risk due to inadequate backup and recovery strategies
 
 **Services**: Backup, CLI, Certified Solutions, CloudWatch, Console
+
+---
+
+### [Eks Url Checker](eks-url-checker/)
+
+Kubernetes orchestration for resilient, self-healing deployments
+
+**Services**: EKS, Kubernetes, CloudFormation, CloudWatch, EC2
+
+---
+
+### [Event Driven Architecture](event-driven-architecture/)
+
+Decoupled, fault-tolerant systems using event-driven patterns
+
+**Services**: EventBridge, Lambda, SNS, SQS, DynamoDB
+
+---
+
+### [Fargate Ecs Deployment](fargate-ecs-deployment/)
+
+Container orchestration with high availability and fault tolerance
+
+**Services**: ECS, Fargate, ECR, CloudWatch, VPC
+
+---
+
+### [Flask Elastic Beanstalk](flask-elastic-beanstalk/)
+
+Auto-scaling web applications with managed infrastructure
+
+**Services**: Elastic Beanstalk, EC2, RDS, CloudFormation, CloudWatch
 
 ---
 

@@ -10,13 +10,9 @@ The Performance Efficiency pillar focuses on structured and streamlined allocati
 - Experiment more often
 - Consider mechanical sympathy
 
-## Projects (1)
+## Projects (0)
 
-### [Langchain Chatbots](langchain-chatbots/)
-
-Database bottlenecks limit application scalability
-
-**Services**: Bedrock, DynamoDB, Lambda, Services Used
+No projects currently in this pillar. Projects will be added as the portfolio grows.
 
 ---
 

@@ -10,7 +10,7 @@ The Operational Excellence pillar focuses on running and monitoring systems, and
 - Anticipate failure
 - Learn from all operational failures
 
-## Projects (26)
+## Projects (18)
 
 ### [Bedrock Console Introduction](bedrock-console-introduction/)
 
@@ -93,14 +93,6 @@ Complex container orchestration requires automated management
 
 ---
 
-### [Dynamodb Capacity Scaling](dynamodb-capacity-scaling/)
-
-Lack of visibility into system health prevents proactive issue resolution
-
-**Services**: Certified Developer, CloudWatch, DynamoDB, IAM, Services
-
----
-
 ### [Dynamodb Streams Lambda](dynamodb-streams-lambda/)
 
 Lack of visibility into system health prevents proactive issue resolution
@@ -125,47 +117,11 @@ Lack of visibility into system health prevents proactive issue resolution
 
 ---
 
-### [Eks Url Checker](eks-url-checker/)
-
-Configuration drift and inconsistent environments across stages
-
-**Services**: AWS
-
-EKS deeply, Beanstalk, CLI, CLI configured, Certification Alignment
-
----
-
-### [Event Driven Architecture](event-driven-architecture/)
-
-Lack of visibility into system health prevents proactive issue resolution
-
-**Services**: CloudWatch, DynamoDB, EventBridge, Lambda, Messaging Services
-
----
-
 ### [Eventbridge Automation](eventbridge-automation/)
 
 Lack of visibility into system health prevents proactive issue resolution
 
 **Services**: Certification Alignment, Certified Developer, Certified Solutions, Certified SysOps, CloudWatch
-
----
-
-### [Fargate Ecs Deployment](fargate-ecs-deployment/)
-
-Lack of visibility into system health prevents proactive issue resolution
-
-**Services**: Beanstalk, Cloud Map, CloudWatch, CodePipeline, EC2
-
----
-
-### [Flask Elastic Beanstalk](flask-elastic-beanstalk/)
-
-Configuration drift and inconsistent environments across stages
-
-**Services**: Beanstalk, Beanstalk
-
-Initialize, Beanstalk Capabilities, Beanstalk Documentation, Beanstalk Environment
 
 ---
 
