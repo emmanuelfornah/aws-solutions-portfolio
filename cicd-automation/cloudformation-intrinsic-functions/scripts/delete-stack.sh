@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # CloudFormation Stack Deletion Script
-# Deletes the CloudFormation Intrinsic Functions lab stack and all resources
+# Deletes the CloudFormation Intrinsic Functions stack and all resources
 
 set -e
 

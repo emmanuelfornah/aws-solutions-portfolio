@@ -38,7 +38,7 @@ See [architecture.md](./architecture.md) for detailed authentication flow and se
 - Handle authentication errors and token expiration
 - Monitor authentication attempts in CloudWatch
 
-## Key Learnings
+## Technical Highlights
 
 - **Cognito User Pools**: User directory and authentication service
 - **JWT Tokens**: Structure and validation of JSON Web Tokens

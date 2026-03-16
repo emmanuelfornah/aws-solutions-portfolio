@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates creating a complete serverless REST API using Amazon API Gateway HTTP API integrated with AWS Lambda functions. You'll build a customer management API with GET and POST endpoints, CORS configuration, and end-to-end testing.
+This project demonstrates creating a complete serverless REST API using Amazon API Gateway HTTP API integrated with AWS Lambda functions. It implements a customer management API with GET and POST endpoints, CORS configuration, and end-to-end testing.
 
 ## AWS Services Used
 

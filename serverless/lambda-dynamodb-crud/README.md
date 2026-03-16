@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates building foundational serverless applications with AWS Lambda and DynamoDB. You'll create Lambda functions that perform CRUD operations on a DynamoDB table and integrate with an S3-hosted static website.
+This project demonstrates building foundational serverless applications with AWS Lambda and DynamoDB. It implements Lambda functions that perform CRUD operations on a DynamoDB table and integrates with an S3-hosted static website.
 
 ## AWS Services Used
 

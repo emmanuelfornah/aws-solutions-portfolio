@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates automated EC2 instance management using AWS Systems Manager Automation. You'll use the AWS-ResizeInstance automation document to resize multiple EC2 instances simultaneously, configure rate control and concurrency limits, set error thresholds, and use tag-based targeting. This approach enables safe, controlled, and auditable infrastructure changes at scale.
+This project demonstrates automated EC2 instance management using AWS Systems Manager Automation. It uses the AWS-ResizeInstance automation document to resize multiple EC2 instances simultaneously, with rate control, concurrency limits, error thresholds, and tag-based targeting. This approach enables safe, controlled, and auditable infrastructure changes at scale.
 
 ## AWS Services Used
 
@@ -22,7 +22,7 @@ This project demonstrates automated EC2 instance management using AWS Systems Ma
 - Monitor automation execution and handle failures
 - Understand automation best practices for production changes
 
-## Key Learnings
+## Technical Highlights
 
 - **Automation Documents**: Pre-built runbooks for common tasks (resize instances, patch AMIs, backup volumes). Custom documents support complex workflows.
 

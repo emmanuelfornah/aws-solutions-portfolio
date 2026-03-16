@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Cleanup OIDC Provider and IAM Role
-# Remove all resources created during the lab
+# Remove all resources created during setup
 
 set -e
 
 ROLE_NAME="WebIdentityRole"
 POLICY_NAME="FederatedUserS3Access"
 
-echo "Cleaning up lab resources..."
+echo "Cleaning up project resources..."
 
 # Get policy ARN
 ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project teaches how to create custom software packages using AWS Systems Manager Distributor. You'll package the CloudWatch agent as a custom Distributor package, store it in S3, and deploy it to EC2 instances using Run Command. Distributor simplifies software distribution across your EC2 fleet without manual downloads or configuration management tools.
+This project demonstrates creating custom software packages using AWS Systems Manager Distributor. It packages the CloudWatch agent as a custom Distributor package, stores it in S3, and deploys it to EC2 instances using Run Command. Distributor simplifies software distribution across your EC2 fleet without manual downloads or configuration management tools.
 
 ## AWS Services Used
 
@@ -21,7 +21,7 @@ This project teaches how to create custom software packages using AWS Systems Ma
 - Verify package installation across EC2 fleet
 - Compare Distributor to traditional software deployment methods
 
-## Key Learnings
+## Technical Highlights
 
 - **Distributor vs Traditional Deployment**: Distributor eliminates manual downloads, SSH sessions, and configuration management complexity. Centralized package management with version control.
 

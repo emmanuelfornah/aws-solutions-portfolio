@@ -483,10 +483,10 @@ Description:
 
 After completing this project:
 
-1. **Python SDK Lab**: Implement prompts programmatically
+1. **Python SDK Project**: Implement prompts programmatically
 2. **Application Integration**: Use prompts in production apps
 3. **RAG Implementation**: Combine prompting with knowledge bases
-4. **Guardrails Lab**: Add safety controls to prompts
+4. **Guardrails Project**: Add safety controls to prompts
 
 ## Additional Resources
 

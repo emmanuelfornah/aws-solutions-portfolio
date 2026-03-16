@@ -39,7 +39,7 @@ See [architecture.md](./architecture.md) for detailed encryption flow and key ma
 - Monitor key usage with CloudTrail
 - Implement key rotation best practices
 
-## Key Learnings
+## Technical Highlights
 
 - **KMS Architecture**: Customer vs AWS managed keys
 - **Envelope Encryption**: Data key encryption model

@@ -455,7 +455,7 @@ aws cloudwatch put-metric-alarm \
 - **Complexity Level**: Intermediate
 - **Estimated Time**: 60 minutes
 - **Prerequisites**: S3, Lambda, basic messaging concepts
-- **Learning Path**: Event-driven architecture patterns
+- **Related Projects**: Event-driven architecture patterns
 
 ## Next Steps
 

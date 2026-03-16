@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project introduces AWS Cloud Development Kit (CDK) fundamentals through building a Lambda-backed API endpoint using Python. Unlike CloudFormation's declarative YAML/JSON templates, CDK uses familiar programming languages to define infrastructure as code. You'll learn CDK core concepts including constructs (reusable cloud components), synthesis (converting code to CloudFormation), deployment, testing with pytest, and iterative updates. The lab demonstrates the power of programmatic infrastructure definition by creating a serverless API that returns greeting messages.
+This project introduces AWS Cloud Development Kit (CDK) fundamentals through building a Lambda-backed API endpoint using Python. Unlike CloudFormation's declarative YAML/JSON templates, CDK uses familiar programming languages to define infrastructure as code. It covers CDK core concepts including constructs (reusable cloud components), synthesis (converting code to CloudFormation), deployment, testing with pytest, and iterative updates — demonstrating the power of programmatic infrastructure definition by creating a serverless API that returns greeting messages.
 
 ## AWS Services Used
 
@@ -43,7 +43,7 @@ The CDK application creates a serverless API architecture:
 - Test deployed APIs with curl and browser
 - Clean up resources with `cdk destroy`
 
-## Key Learnings
+## Technical Highlights
 
 - **CDK Abstracts CloudFormation Complexity**: Instead of writing verbose YAML, you use Python classes and methods. CDK generates optimized CloudFormation templates automatically.
 

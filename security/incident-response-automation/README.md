@@ -47,7 +47,7 @@ See [architecture.md](./architecture.md) for detailed incident response architec
 - Implement notification workflows
 - Maintain audit trails and compliance
 
-## Key Learnings
+## Technical Highlights
 
 - **Incident Response Lifecycle**: Preparation, detection, containment, eradication, recovery
 - **Digital Forensics**: Evidence collection and chain of custody
@@ -598,7 +598,7 @@ fields @timestamp, eventName, userIdentity.arn, requestParameters
 - [NIST Incident Response Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 - [AWS Systems Manager Incident Manager](https://docs.aws.amazon.com/incident-manager/)
 
-## Lab Duration
+## Estimated Duration
 
 **Estimated Time**: 75 minutes
 

@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Cleanup Zero Trust Lab Resources
+# Cleanup Zero Trust Resources
 # Removes all created resources
 
 set -e
 
 REGION="us-east-1"
 
-echo "Cleaning up Zero Trust lab resources..."
+echo "Cleaning up Zero Trust resources..."
 
 # Delete VPC endpoint
 if [ -f vpc-endpoint-id.txt ]; then

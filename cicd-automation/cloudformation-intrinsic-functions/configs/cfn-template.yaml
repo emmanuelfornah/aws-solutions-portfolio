@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'CloudFormation Intrinsic Functions Lab - Complete Implementation'
+Description: 'CloudFormation Intrinsic Functions - Complete Implementation'
 
 Parameters:
   Environment:
@@ -71,7 +71,7 @@ Resources:
           <head>
               <meta charset="UTF-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>CloudFormation Utilities Lab</title>
+              <title>CloudFormation Utilities</title>
               <style>
                   body {
                       font-family: Arial, sans-serif;

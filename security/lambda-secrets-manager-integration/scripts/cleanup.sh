@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Cleanup Lambda and Secrets Manager Resources
-# This script removes all resources created during the lab
+# This script removes all resources created during setup
 
 set -e
 

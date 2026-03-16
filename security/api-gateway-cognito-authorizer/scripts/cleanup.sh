@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Cleanup API Gateway and Cognito Resources
-# This script removes all resources created during the lab
+# This script removes all resources created during setup
 
 set -e
 

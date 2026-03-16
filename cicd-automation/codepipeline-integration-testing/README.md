@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project focuses on integrating automated integration testing into a CI/CD pipeline using AWS CodePipeline. You'll configure a pipeline to include an integration testing stage that validates application functionality before deployment. The lab demonstrates how integration tests differ from unit tests by verifying that multiple components work together correctly, including the Flask application's interaction with external dependencies.
+This project focuses on integrating automated integration testing into a CI/CD pipeline using AWS CodePipeline. It configures a pipeline with an integration testing stage that validates application functionality before deployment. This project demonstrates how integration tests differ from unit tests by verifying that multiple components work together correctly, including the Flask application's interaction with external dependencies.
 
 **Duration:** 60 minutes  
 **Complexity:** Intermediate  
@@ -33,7 +33,7 @@ By completing this project, you will:
 
 ## Architecture
 
-The lab implements a multi-stage CI/CD pipeline with separate unit and integration testing:
+This project implements a multi-stage CI/CD pipeline with separate unit and integration testing:
 
 1. **Developer** - Makes code changes and pushes to CodeCommit
 2. **CodeCommit** - Stores source code in Git repository
@@ -199,7 +199,7 @@ Monitor the pipeline:
 5. Verify the application is working correctly
 6. Test the API endpoint: `http://<instance-ip>/api/data`
 
-## Key Learnings
+## Technical Highlights
 
 ### Integration Testing vs Unit Testing
 

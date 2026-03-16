@@ -350,7 +350,7 @@ curl -X POST https://<api-id>.execute-api.<region>.amazonaws.com/order \
 - **Complexity Level**: Advanced
 - **Estimated Time**: 60 minutes
 - **Prerequisites**: Lambda, API Gateway, DynamoDB basics
-- **Learning Path**: Event-driven architecture fundamentals
+- **Related Projects**: Event-driven architecture fundamentals
 
 ## Next Steps
 

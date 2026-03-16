@@ -476,9 +476,9 @@ def estimate_cost(input_tokens, output_tokens, model_id):
 After completing this project:
 
 1. **Flashcard Application Lab**: Build serverless AI app with Lambda
-2. **RAG Lab**: Integrate with knowledge bases
-3. **LangChain Lab**: Use production AI framework
-4. **Guardrails Lab**: Add security controls
+2. **RAG Project**: Integrate with knowledge bases
+3. **LangChain Project**: Use production AI framework
+4. **Guardrails Project**: Add security controls
 
 ## Key Takeaways
 

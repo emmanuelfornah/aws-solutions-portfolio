@@ -42,7 +42,7 @@ aws iam create-role \
   --role-name "$ROLE_NAME" \
   --assume-role-policy-document file://trust-policy.json \
   --description "Role for web identity federation with OIDC provider" \
-  --tags Key=Purpose,Value=WebIdentityFederation Key=Environment,Value=Lab
+  --tags Key=Purpose,Value=WebIdentityFederation Key=Environment,Value=Dev
 
 # Get role ARN
 ROLE_ARN=$(aws iam get-role --role-name "$ROLE_NAME" --query 'Role.Arn' --output text)

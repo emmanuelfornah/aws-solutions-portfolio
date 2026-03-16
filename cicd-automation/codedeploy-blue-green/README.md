@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project teaches how to implement a blue/green deployment strategy using AWS CodeDeploy to eliminate downtime during application updates. You'll work with an existing CodePipeline that performs in-place deployments (causing downtime) and transform it to use blue/green deployments across two EC2 instances behind an Application Load Balancer. This approach allows you to verify new instances before routing traffic, ensuring zero-downtime deployments.
+This project demonstrates implementing a blue/green deployment strategy using AWS CodeDeploy to eliminate downtime during application updates. It transforms an existing CodePipeline from in-place deployments (causing downtime) to blue/green deployments across two EC2 instances behind an Application Load Balancer. This approach verifies new instances before routing traffic, ensuring zero-downtime deployments.
 
 **Duration:** 90 minutes  
 **Complexity:** Intermediate  
@@ -246,7 +246,7 @@ Navigate to **CodeDeploy** console and watch the deployment progress through 4 s
 3. Observe the original instances enter "Terminating" state
 4. The green instances remain running as the new production environment
 
-## Key Learnings
+## Technical Highlights
 
 ### Blue/Green Deployment Benefits
 

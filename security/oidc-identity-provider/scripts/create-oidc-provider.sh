@@ -26,7 +26,7 @@ aws iam create-open-id-connect-provider \
   --url "$PROVIDER_URL" \
   --client-id-list "$CLIENT_ID" \
   --thumbprint-list "$THUMBPRINT" \
-  --tags Key=Purpose,Value=WebIdentityFederation Key=Environment,Value=Lab
+  --tags Key=Purpose,Value=WebIdentityFederation Key=Environment,Value=Dev
 
 # Get provider ARN
 PROVIDER_ARN=$(aws iam list-open-id-connect-providers --query \

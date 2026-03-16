@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates operational monitoring and alerting using Amazon CloudWatch Alarms to track EC2 instance performance. You'll create CloudWatch alarms for CPU utilization, configure SNS email notifications, stress test EC2 instances to trigger alarms, and build CloudWatch dashboards for visualization. This hands-on experience teaches proactive monitoring strategies essential for maintaining application availability and performance.
+This project demonstrates operational monitoring and alerting using Amazon CloudWatch Alarms to track EC2 instance performance. It configures CloudWatch alarms for CPU utilization, SNS email notifications, EC2 stress testing to trigger alarms, and CloudWatch dashboards for visualization — covering proactive monitoring strategies essential for maintaining application availability and performance.
 
 ## AWS Services Used
 
@@ -34,7 +34,7 @@ See [architecture.md](./architecture.md) for detailed architecture diagrams and 
 - Build CloudWatch dashboards for operational visibility
 - Implement best practices for alarm threshold selection
 
-## Key Learnings
+## Technical Highlights
 
 - **CloudWatch Metrics**: EC2 instances automatically send metrics to CloudWatch every 5 minutes (basic monitoring) or 1 minute (detailed monitoring). No agent required for basic metrics like CPU, network, and disk I/O.
 
@@ -299,7 +299,7 @@ To avoid ongoing charges:
 1. Delete CloudWatch alarm: `HighCPUUtilization-[INSTANCE-ID]`
 2. Delete CloudWatch dashboard: `EC2PerformanceMonitoring`
 3. Delete SNS topic: `EC2PerformanceAlerts`
-4. Stop or terminate EC2 instance (if created for lab)
+4. Stop or terminate EC2 instance (if created for testing)
 
 ## Real-World Applications
 

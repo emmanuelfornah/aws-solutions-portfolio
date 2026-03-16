@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Cleanup AWS WAF Resources
-# This script removes all WAF resources created during the lab
+# This script removes all WAF resources created during setup
 
 set -e
 

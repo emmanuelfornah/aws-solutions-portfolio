@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates orchestrating complex serverless workflows using AWS Step Functions. You'll build a trivia game application that coordinates multiple Lambda functions using state machines with conditional logic, wait states, and error handling.
+This project demonstrates orchestrating complex serverless workflows using AWS Step Functions. It implements a trivia game application that coordinates multiple Lambda functions using state machines with conditional logic, wait states, and error handling.
 
 ## AWS Services Used
 

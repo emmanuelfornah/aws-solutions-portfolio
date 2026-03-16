@@ -45,7 +45,7 @@ See [architecture.md](./architecture.md) for detailed Zero Trust architecture an
 - Monitor and audit service interactions
 - Test authorization and access controls
 
-## Key Learnings
+## Technical Highlights
 
 - **Zero Trust Model**: Never trust, always verify approach
 - **SigV4 Authentication**: AWS request signing for API calls
@@ -447,7 +447,7 @@ Service B (Backend)
 - [VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html)
 - [Zero Trust Whitepaper](https://docs.aws.amazon.com/whitepapers/latest/zero-trust-architectures/)
 
-## Lab Duration
+## Estimated Duration
 
 **Estimated Time**: 75 minutes
 

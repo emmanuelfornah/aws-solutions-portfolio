@@ -267,8 +267,8 @@ By completing this project, you will:
 
 After completing this project:
 
-1. **Prompt Engineering Lab**: Learn advanced prompting techniques
-2. **Python SDK Lab**: Programmatic model invocation with Boto3
+1. **Prompt Engineering Project**: Learn advanced prompting techniques
+2. **Python SDK Project**: Programmatic model invocation with Boto3
 3. **Application Integration**: Build serverless AI applications
 4. **RAG Implementation**: Integrate proprietary data with knowledge bases
 

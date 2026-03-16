@@ -38,7 +38,7 @@ See [architecture.md](./architecture.md) for detailed WAF rule evaluation flow a
 - Test WAF rules with simulated attacks
 - Monitor and analyze blocked requests
 
-## Key Learnings
+## Technical Highlights
 
 - **WAF Architecture**: Web ACL structure and rule evaluation
 - **Managed Rules**: AWS Managed Rules and Marketplace rules

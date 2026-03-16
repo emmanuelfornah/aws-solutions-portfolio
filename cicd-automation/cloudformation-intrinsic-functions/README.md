@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project teaches advanced CloudFormation template development through hands-on implementation of intrinsic functions, conditions, and rules. As AnyCompany transitions to Infrastructure as Code (IaC), you enhance an existing CloudFormation template by implementing key utilities that enable dynamic resource configuration, cross-stack references, and environment-specific deployments. The fill-in-the-blanks approach reinforces learning by requiring active implementation rather than passive observation.
+This project demonstrates advanced CloudFormation template development through hands-on implementation of intrinsic functions, conditions, and rules. It enhances an existing CloudFormation template by implementing key utilities that enable dynamic resource configuration, cross-stack references, and environment-specific deployments.
 
 ## AWS Services Used
 
@@ -43,7 +43,7 @@ The CloudFormation template creates a multi-environment EC2 deployment with dyna
 - Deploy and validate a multi-environment CloudFormation stack
 - Test dynamic configuration by accessing the deployed web application
 
-## Key Learnings
+## Technical Highlights
 
 - **Intrinsic Functions Enable Dynamic Templates**: Functions like `!Ref`, `!FindInMap`, and `!Sub` transform static YAML into dynamic infrastructure code that adapts to different environments and inputs.
 
@@ -71,7 +71,7 @@ The CloudFormation template creates a multi-environment EC2 deployment with dyna
 ### Step 1: Access AWS Code Editor and Open Template
 
 1. Navigate to AWS Code Editor in the AWS Console
-2. Open the `LabTemplate.yaml` file in the editor
+2. Open the `cfn-template.yaml` file in the editor
 3. Review the template structure: Parameters, Mappings, Resources, Outputs
 4. Identify the sections marked with `# TODO: Implement` comments
 
@@ -172,7 +172,7 @@ The `!Sub` function performs string substitution with variable interpolation.
           
           cat > /var/www/html/index.html <<EOF
           <html>
-          <head><title>CloudFormation Utilities Lab</title></head>
+          <head><title>CloudFormation Utilities</title></head>
           <body>
             <h1>CloudFormation Intrinsic Functions Demo</h1>
             <p><strong>Environment:</strong> ${Environment}</p>
@@ -193,7 +193,7 @@ The `!Sub` function performs string substitution with variable interpolation.
 
 ### Step 7: Deploy CloudFormation Stack
 
-1. Save the completed `LabTemplate.yaml` file
+1. Save the completed `cfn-template.yaml` file
 2. Navigate to CloudFormation in the AWS Console
 3. Click "Create stack" → "With new resources"
 4. Upload the template file
@@ -227,12 +227,12 @@ The `!Sub` function performs string substitution with variable interpolation.
 
 ## Configuration Files
 
-### LabTemplate.yaml
+### cfn-template.yaml
 
 The main CloudFormation template with intrinsic functions implementation:
 
-- **[configs/LabTemplate.yaml](./configs/LabTemplate.yaml)** - Complete template with all intrinsic functions
-- **[configs/LabTemplate-starter.yaml](./configs/LabTemplate-starter.yaml)** - Starter template with TODO comments for hands-on practice
+- **[configs/cfn-template.yaml](./configs/cfn-template.yaml)** - Complete template with all intrinsic functions
+- **[configs/cfn-template-starter.yaml](./configs/cfn-template-starter.yaml)** - Starter template with TODO comments for hands-on practice
 
 ### Key Template Sections
 

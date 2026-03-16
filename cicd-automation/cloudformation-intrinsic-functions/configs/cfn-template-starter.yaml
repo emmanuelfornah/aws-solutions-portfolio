@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'CloudFormation Intrinsic Functions Lab - Starter Template with TODOs'
+Description: 'CloudFormation Intrinsic Functions - Starter Template with TODOs'
 
 Parameters:
   Environment:
@@ -70,7 +70,7 @@ Resources:
           # 
           # cat > /var/www/html/index.html <<EOF
           # <html>
-          # <head><title>CloudFormation Utilities Lab</title></head>
+          # <head><title>CloudFormation Utilities</title></head>
           # <body>
           #   <h1>CloudFormation Intrinsic Functions Demo</h1>
           #   <p><strong>Environment:</strong> ${Environment}</p>

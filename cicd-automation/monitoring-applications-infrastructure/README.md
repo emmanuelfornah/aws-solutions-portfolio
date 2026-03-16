@@ -2,7 +2,7 @@
 
 ## Overview
 
-This comprehensive lab demonstrates end-to-end monitoring using Amazon CloudWatch, including CloudWatch agent installation via Systems Manager, custom metric collection, dashboard creation, alarm configuration, and automated testing with Lambda. You'll learn to monitor both infrastructure metrics (CPU, memory, disk) and application metrics using a unified monitoring platform.
+This project demonstrates end-to-end monitoring using Amazon CloudWatch, including CloudWatch agent installation via Systems Manager, custom metric collection, dashboard creation, alarm configuration, and automated testing with Lambda. It covers monitoring both infrastructure metrics (CPU, memory, disk) and application metrics using a unified monitoring platform.
 
 ## AWS Services Used
 
@@ -39,7 +39,7 @@ See [architecture.md](./architecture.md) for detailed architecture diagrams.
 - Implement Lambda Canary function for automated testing
 - Understand unified CloudWatch agent vs legacy monitoring scripts
 
-## Key Learnings
+## Technical Highlights
 
 - **Unified CloudWatch Agent**: Replaces legacy monitoring scripts. Collects metrics and logs in single agent. Supports EC2 and on-premises servers.
 

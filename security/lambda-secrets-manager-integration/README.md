@@ -39,7 +39,7 @@ See [architecture.md](./architecture.md) for detailed secret retrieval flow and 
 - Implement error handling and retry logic
 - Follow security best practices for Lambda
 
-## Key Learnings
+## Technical Highlights
 
 - **Lambda IAM Roles**: Execution role configuration
 - **Secrets Manager SDK**: Programmatic secret retrieval

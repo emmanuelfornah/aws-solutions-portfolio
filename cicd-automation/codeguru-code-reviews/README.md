@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates how to automate code quality and security analysis using Amazon CodeGuru Reviewer. You'll integrate CodeGuru with a Python Flask application in AWS CodeCommit, perform full repository analysis, fix identified security issues, and implement pull request-based code reviews as part of your CI/CD workflow.
+This project demonstrates automating code quality and security analysis using Amazon CodeGuru Reviewer. It integrates CodeGuru with a Python Flask application in AWS CodeCommit, performs full repository analysis, fixes identified security issues, and implements pull request-based code reviews as part of a CI/CD workflow.
 
 ## Objectives
 
@@ -26,7 +26,7 @@ By completing this project, you will:
 
 ## Architecture
 
-The lab uses a complete CI/CD pipeline with automated code review integration:
+This project uses a complete CI/CD pipeline with automated code review integration:
 
 ```
 Developer → CodeCommit → CodeGuru Reviewer → Pull Request → CodePipeline
@@ -54,7 +54,7 @@ Developer → CodeCommit → CodeGuru Reviewer → Pull Request → CodePipeline
 - Knowledge of CI/CD concepts
 - AWS CLI configured (optional, for command-line operations)
 
-## Lab Setup Instructions
+## Setup Instructions
 
 ### Step 1: Review Existing Application
 
@@ -210,7 +210,7 @@ git push --set-upstream origin fix-security-issues
 4. Access the application via EC2 instance public IP
 5. Confirm application functions correctly without debug mode
 
-## Key Learnings
+## Technical Highlights
 
 ### Technical Concepts
 
@@ -347,10 +347,10 @@ git push --set-upstream origin fix-security-issues
 - EC2: Charged per instance hour
 - DynamoDB: Pay per request and storage
 
-**Estimated Lab Cost**: $2-5 for completion (assuming free tier eligibility)
+**Estimated Cost**: $2-5 for completion (assuming free tier eligibility)
 
 ---
 
-**Lab Duration**: 60 minutes  
+**Estimated Duration**: 60 minutes  
 **Complexity**: Intermediate  
 **Last Updated**: 2024

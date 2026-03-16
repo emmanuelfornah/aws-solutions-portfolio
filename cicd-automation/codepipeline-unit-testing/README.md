@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates how to implement automated unit testing in a CI/CD pipeline using AWS CodePipeline. You'll work with a Flask-based Presidents application that has a bug in its age calculation logic, fix the bug using test-driven development practices, and watch as CodePipeline automatically tests and deploys your changes.
+This project demonstrates implementing automated unit testing in a CI/CD pipeline using AWS CodePipeline. It works with a Flask-based Presidents application that has a bug in its age calculation logic, fixes the bug using test-driven development practices, and validates the fix through automated pipeline execution.
 
 **Duration:** 60 minutes  
 **Complexity:** Intermediate  
@@ -47,7 +47,7 @@ By completing this project, you will:
 
 ## Architecture
 
-The lab implements a complete CI/CD pipeline:
+This project implements a complete CI/CD pipeline:
 
 1. **Developer** - Makes code changes in AWS Cloud9/Code Editor
 2. **CodeCommit** - Stores source code in Git repository
@@ -150,7 +150,7 @@ Or use the provided script:
 2. Refresh the page
 3. Confirm President John Adams now shows age 90 (correct)
 
-## Key Learnings
+## Technical Highlights
 
 ### CI/CD Pipeline Automation
 

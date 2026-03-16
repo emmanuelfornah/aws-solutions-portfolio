@@ -39,7 +39,7 @@ See [architecture.md](./architecture.md) for detailed federation flow and securi
 - Implement token refresh and credential rotation
 - Monitor federated access in CloudTrail
 
-## Key Learnings
+## Technical Highlights
 
 - **OIDC Protocol**: OpenID Connect authentication flow
 - **Web Identity Federation**: Third-party identity integration
@@ -295,7 +295,7 @@ STS operation for federated access:
 - [OpenID Connect Specification](https://openid.net/connect/)
 - [JWT Token Best Practices](https://tools.ietf.org/html/rfc8725)
 
-## Lab Duration
+## Estimated Duration
 
 **Estimated Time**: 45-60 minutes
 

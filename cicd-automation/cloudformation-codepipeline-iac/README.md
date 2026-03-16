@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project teaches how to create a CloudFormation template and configure CodePipeline to automatically deploy infrastructure when changes are made to the source code repository. You'll build a complete web application infrastructure including VPC, EC2 instances, Application Load Balancer, and security groups, then implement a CI/CD pipeline that automatically deploys infrastructure changes. The lab culminates in fixing a security vulnerability by removing SSH access through the pipeline.
+This project demonstrates creating a CloudFormation template and configuring CodePipeline to automatically deploy infrastructure when changes are made to the source code repository. It builds a complete web application infrastructure including VPC, EC2 instances, Application Load Balancer, and security groups, then implements a CI/CD pipeline that automatically deploys infrastructure changes — including fixing a security vulnerability by removing SSH access through the pipeline.
 
 **Duration:** 75 minutes  
 **Complexity:** Intermediate  
@@ -36,7 +36,7 @@ By completing this project, you will:
 
 ## Architecture
 
-The lab implements a multi-tier web application infrastructure with automated deployment:
+This project implements a multi-tier web application infrastructure with automated deployment:
 
 ### Infrastructure Components
 
@@ -351,7 +351,7 @@ Watch the pipeline automatically trigger and deploy the updated stack.
 3. Check their security groups
 4. Verify Port 22 is no longer in the inbound rules
 
-## Key Learnings
+## Technical Highlights
 
 ### Infrastructure as Code Benefits
 

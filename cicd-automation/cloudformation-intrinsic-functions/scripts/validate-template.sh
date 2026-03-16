@@ -5,7 +5,7 @@
 
 set -e
 
-TEMPLATE_FILE="${1:-../configs/LabTemplate.yaml}"
+TEMPLATE_FILE="${1:-../configs/cfn-template.yaml}"
 
 # Colors for output
 GREEN='\033[0;32m'

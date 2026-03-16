@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # CloudFormation Stack Deployment Script
-# Deploys the CloudFormation Intrinsic Functions lab stack
+# Deploys the CloudFormation Intrinsic Functions stack
 
 set -e
 
 # Configuration
 STACK_NAME="CloudFormationUtilities"
-TEMPLATE_FILE="../configs/LabTemplate.yaml"
+TEMPLATE_FILE="../configs/cfn-template.yaml"
 ENVIRONMENT="${1:-Development}"  # Default to Development if not specified
 
 # Colors for output
@@ -66,7 +66,7 @@ else
         --template-body file://${TEMPLATE_FILE} \
         --parameters ParameterKey=Environment,ParameterValue=${ENVIRONMENT} \
         --capabilities CAPABILITY_IAM \
-        --tags Key=Project,Value=CloudFormationLab Key=Environment,Value=${ENVIRONMENT}
+        --tags Key=Project,Value=CloudFormationIntrinsics Key=Environment,Value=${ENVIRONMENT}
     
     echo -e "${BLUE}Waiting for stack creation to complete...${NC}"
     echo -e "${BLUE}This may take 5-10 minutes...${NC}"
