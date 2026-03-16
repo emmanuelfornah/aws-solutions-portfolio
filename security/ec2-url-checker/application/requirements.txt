@@ -1,7 +1,0 @@
-# Python dependencies for URL Checker application
-
-# HTTP library for making GET requests to check URL availability
-requests==2.31.0
-
-# Library for creating formatted ASCII tables for output display
-tabulate==0.9.0

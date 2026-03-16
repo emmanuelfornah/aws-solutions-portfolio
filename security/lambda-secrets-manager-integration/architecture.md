@@ -2,7 +2,6 @@
 
 ## Architecture Diagram
 
-```
 ┌─────────────────────────────────────────────────────────────────┐
 │                     Event Sources                                │
 │                                                                   │
@@ -124,13 +123,11 @@
           │  - Cache hit/miss metrics               │
           │  - Error logs                           │
           └─────────────────────────────────────────┘
-```
 
 ## Secret Retrieval Flow
 
 ### Cold Start (First Invocation)
 
-```
 Step 1: Lambda Initialization
 ┌─────────────────────────────────────┐
 │  Lambda Cold Start                  │
@@ -191,11 +188,9 @@ Step 6: Use Secret
 └─────────────────────────────────────┘
 
 Total Latency: ~100-250ms
-```
 
 ### Warm Start (Subsequent Invocations)
 
-```
 Step 1: Lambda Warm Start
 ┌─────────────────────────────────────┐
 │  Lambda Warm Invocation             │
@@ -230,11 +225,9 @@ Step 4: Use Secret
 └─────────────────────────────────────┘
 
 Total Latency: ~1-5ms (99% reduction)
-```
 
 ### Cache Expiration
 
-```
 Step 1: Check Cache
 ┌─────────────────────────────────────┐
 │  Cache Check                        │
@@ -259,7 +252,6 @@ Step 3: Use Updated Secret
 │  Connect with New Credentials       │
 │  (handles rotation automatically)   │
 └─────────────────────────────────────┘
-```
 
 ## Lambda Function Code Examples
 
@@ -387,7 +379,6 @@ def lambda_handler(event, context):
                 'error': str(e)
             })
         }
-```
 
 ### Node.js Implementation with Caching
 
@@ -485,7 +476,6 @@ exports.handler = async (event, context) => {
         };
     }
 };
-```
 
 ## IAM Execution Role Policy
 
@@ -537,7 +527,6 @@ exports.handler = async (event, context) => {
     }
   ]
 }
-```
 
 ## Handling Secret Rotation
 
@@ -592,13 +581,11 @@ def connect_to_database_with_retry(secret):
                 )
             else:
                 raise e
-```
 
 ## Performance Optimization
 
 ### Caching Strategy Comparison
 
-```
 Without Caching:
 ├─ Every invocation: Secrets Manager API call
 ├─ Latency: 50-150ms per invocation
@@ -617,11 +604,9 @@ Performance Improvement:
 ├─ Cost: 72% reduction
 ├─ API calls: 71% reduction
 └─ Throughput: Higher (less API throttling)
-```
 
 ### VPC Integration for Private Access
 
-```
 ┌─────────────────────────────────────────┐
 │  Lambda Function (in VPC)               │
 │  - Private subnet                       │
@@ -651,13 +636,11 @@ Benefits:
 ├─ Lower latency (private network)
 ├─ Cost savings (no NAT Gateway)
 └─ Compliance (data residency)
-```
 
 ## Monitoring and Logging
 
 ### CloudWatch Logs Structure
 
-```
 Log Group: /aws/lambda/my-function
 
 Log Stream: 2024/01/15/[$LATEST]abc123...
@@ -686,11 +669,9 @@ REPORT RequestId: def-456
   Billed Duration: 46 ms
   Memory Size: 256 MB
   Max Memory Used: 86 MB
-```
 
 ### X-Ray Tracing
 
-```
 Trace Timeline:
 ├─ Lambda Initialization: 450ms
 │  └─ Load dependencies: 400ms
@@ -708,7 +689,6 @@ Subsequent Invocation (Cached):
 │  ├─ Database Connection: 30ms
 │  └─ Query Execution: 15ms
 └─ Total Duration: 45ms
-```
 
 ## Best Practices
 
@@ -747,7 +727,6 @@ Subsequent Invocation (Cached):
 
 ### Cost Breakdown
 
-```
 Monthly Cost Example (1M invocations):
 
 Lambda:
@@ -773,7 +752,6 @@ Without Caching:
 └─ Total: $6.70/month
 
 Savings with Caching: $4.37/month (65%)
-```
 
 ## Additional Resources
 

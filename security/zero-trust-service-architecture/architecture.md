@@ -2,7 +2,6 @@
 
 ## Architecture Diagram
 
-```
 ┌────────────────────────────────────────────────────────────────────────┐
 │                          AWS Account                                    │
 │                                                                         │
@@ -135,20 +134,16 @@
 │  │  - Alarms: Unauthorized access attempts                          │ │
 │  └──────────────────────────────────────────────────────────────────┘ │
 └────────────────────────────────────────────────────────────────────────┘
-```
 
 ## Zero Trust Principles Implementation
 
 ### 1. Never Trust, Always Verify
 
 **Traditional Model** (Implicit Trust):
-```
 Service A → Service B
 └── If on same network → Trusted
-```
 
 **Zero Trust Model** (Explicit Verification):
-```
 Service A → Service B
 ├── Authenticate with IAM credentials
 ├── Sign request with SigV4
@@ -156,7 +151,6 @@ Service A → Service B
 ├── Evaluate IAM policies
 ├── Check resource policy
 └── If all pass → Authorized
-```
 
 ### 2. Least Privilege Access
 
@@ -175,7 +169,6 @@ Service A → Service B
     }
   ]
 }
-```
 
 **Not This** (Overly Permissive):
 ```json
@@ -184,7 +177,6 @@ Service A → Service B
   "Action": "execute-api:*",
   "Resource": "*"
 }
-```
 
 ### 3. Assume Breach
 
@@ -197,7 +189,6 @@ Design assumes attackers may compromise a service:
 
 ### 4. Micro-Segmentation
 
-```
 ┌─────────────────────────────────────────────────────────┐
 │                    Traditional Segmentation              │
 │                                                          │
@@ -226,13 +217,11 @@ Design assumes attackers may compromise a service:
 │  - Unique IAM role                                      │
 │  - Explicit authorization required                      │
 └─────────────────────────────────────────────────────────┘
-```
 
 ## SigV4 Signing Process
 
 ### Step-by-Step Signing
 
-```
 1. Create Canonical Request
    ├── HTTP Method: GET
    ├── Canonical URI: /prod/users
@@ -282,7 +271,6 @@ Design assumes attackers may compromise a service:
      Credential=AKIAIOSFODNN7EXAMPLE/20240115/us-east-1/execute-api/aws4_request,
      SignedHeaders=host;x-amz-date;x-amz-security-token,
      Signature=[calculated-signature]
-```
 
 ### Python Example
 
@@ -342,13 +330,11 @@ def sign_request(method, url, headers, body, access_key, secret_key, session_tok
     headers['Authorization'] = authorization
     
     return headers
-```
 
 ## Policy Evaluation Flow
 
 ### Combined Policy Evaluation
 
-```
 Request from Service A to API Gateway
 │
 ├─ Step 1: Authenticate
@@ -376,11 +362,9 @@ Request from Service A to API Gateway
 │  └─ Result: ALLOW (continue to next step)
 │
 └─ Final Decision: ALLOW → Invoke backend service
-```
 
 ### Policy Evaluation Logic
 
-```
 Decision = Deny by Default
 
 For each policy:
@@ -396,13 +380,11 @@ For each policy:
         Continue (condition not met)
 
 Return Decision
-```
 
 ## Network Architecture
 
 ### Security Group Configuration
 
-```
 ┌─────────────────────────────────────────────────────────┐
 │  Security Group: ServiceA-SG                            │
 │                                                          │
@@ -444,7 +426,6 @@ Return Decision
 │  Outbound Rules:                                        │
 │  - As needed for Service B dependencies                 │
 └─────────────────────────────────────────────────────────┘
-```
 
 ### VPC Endpoint Configuration
 
@@ -470,13 +451,11 @@ Return Decision
     ]
   }
 }
-```
 
 ## Monitoring and Alerting
 
 ### CloudWatch Metrics
 
-```
 API Gateway Metrics:
 ├── Count: Total requests
 ├── 4XXError: Client errors (auth failures)
@@ -490,7 +469,6 @@ Custom Metrics:
 ├── AuthenticationFailures: Invalid signatures
 ├── ResourcePolicyDenials: Resource policy blocks
 └── UnusualAccessPatterns: Anomaly detection
-```
 
 ### CloudWatch Alarms
 
@@ -514,7 +492,6 @@ AuthenticationFailureAlarm:
   AlarmActions:
     - SNS Topic: security-alerts
     - Lambda: block-suspicious-principal
-```
 
 ### CloudTrail Analysis
 
@@ -540,7 +517,6 @@ GROUP BY
   errorCode,
   errorMessage
 ORDER BY attempts DESC
-```
 
 ## Best Practices Summary
 

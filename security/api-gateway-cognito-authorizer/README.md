@@ -2,7 +2,7 @@
 
 ## Overview
 
-This lab demonstrates implementing authentication and authorization for REST APIs using Amazon Cognito User Pools as an authorizer for API Gateway. The implementation includes creating a Cognito User Pool with app client configuration, integrating Cognito authorizer with API Gateway, testing authenticated and unauthenticated requests, and implementing token-based access control for API endpoints.
+This project demonstrates implementing authentication and authorization for REST APIs using Amazon Cognito User Pools as an authorizer for API Gateway. The implementation includes creating a Cognito User Pool with app client configuration, integrating Cognito authorizer with API Gateway, testing authenticated and unauthenticated requests, and implementing token-based access control for API endpoints.
 
 ## AWS Services Used
 
@@ -143,12 +143,17 @@ Verify authorization enforcement:
 - **authorizer-config.json** - API Gateway authorizer
 - **api-definition.json** - API Gateway configuration
 
-## Lab Metadata
+## Metadata
 
 - **Domain**: Security
 - **Complexity Level**: Intermediate
 - **Estimated Time**: 60 minutes
 - **AWS Services**: API Gateway, Cognito, Lambda, IAM, CloudWatch
 - **Key Concepts**: Authentication, authorization, JWT tokens, OAuth 2.0
-- **Certification Alignment**: AWS Certified Solutions Architect - Associate (API security), AWS Certified Developer - Associate (Cognito integration)
 
+## Real-World Application
+
+- **SaaS authentication**: Every multi-tenant SaaS application needs JWT-based authentication — Cognito + API Gateway is the AWS-native pattern
+- **Mobile app backends**: Mobile applications use Cognito User Pools for sign-up/sign-in flows with social identity federation (Google, Apple, Facebook)
+- **API monetization**: API Gateway with Cognito authorizers enables usage plans and API keys for third-party developer access
+- **Healthcare portals**: Patient-facing applications use Cognito for HIPAA-compliant authentication with MFA enforcement

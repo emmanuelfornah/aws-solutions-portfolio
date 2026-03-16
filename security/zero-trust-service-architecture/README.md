@@ -2,7 +2,7 @@
 
 ## Overview
 
-This lab demonstrates implementing Zero Trust security principles for service-to-service communication in AWS. The implementation includes API Gateway with IAM authorization using SigV4 signing, API Gateway resource policies for fine-grained access control, VPC endpoint policies for private connectivity, security group tuning for network isolation, and comprehensive service-to-service authentication patterns that eliminate implicit trust.
+This project demonstrates implementing Zero Trust security principles for service-to-service communication in AWS. The implementation includes API Gateway with IAM authorization using SigV4 signing, API Gateway resource policies for fine-grained access control, VPC endpoint policies for private connectivity, security group tuning for network isolation, and comprehensive service-to-service authentication patterns that eliminate implicit trust.
 
 ## AWS Services Used
 
@@ -455,6 +455,3 @@ Service B (Backend)
 
 **Complexity**: Advanced
 
-## Tags
-
-`Zero Trust` `IAM` `API Gateway` `SigV4` `VPC Endpoints` `Security Groups` `Service-to-Service` `Authentication` `Authorization` `Network Security`

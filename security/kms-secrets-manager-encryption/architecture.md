@@ -2,7 +2,6 @@
 
 ## Architecture Diagram
 
-```
 ┌─────────────────────────────────────────────────────────────────┐
 │                     Application Layer                            │
 │                                                                   │
@@ -112,13 +111,11 @@
           │  - Key policy changes                   │
           │  - Compliance auditing                  │
           └─────────────────────────────────────────┘
-```
 
 ## Envelope Encryption Flow
 
 ### Encryption Process (Storing Secret)
 
-```
 Step 1: Generate Data Key
 ┌─────────────────────────────────────┐
 │  Application/Secrets Manager        │
@@ -155,11 +152,9 @@ Result:
 ├─ Encrypted Secret (ciphertext)
 ├─ Encrypted Data Key (ciphertext)
 └─ No plaintext data stored
-```
 
 ### Decryption Process (Retrieving Secret)
 
-```
 Step 1: Retrieve Encrypted Secret
 ┌─────────────────────────────────────┐
 │  Application                         │
@@ -206,11 +201,9 @@ Step 1: Retrieve Encrypted Secret
 │    "host": "db.example.com"          │
 │  }                                   │
 └─────────────────────────────────────┘
-```
 
 ## Secret Rotation Architecture
 
-```
                     Rotation Schedule
                     (e.g., every 30 days)
                             │
@@ -263,7 +256,6 @@ Step 1: Retrieve Encrypted Secret
           │  - Timestamp                        │
           │  - Version information              │
           └─────────────────────────────────────┘
-```
 
 ## KMS Key Policy Structure
 
@@ -327,7 +319,6 @@ Step 1: Retrieve Encrypted Secret
     }
   ]
 }
-```
 
 ## IAM Policy for Secret Access
 
@@ -362,13 +353,11 @@ Step 1: Retrieve Encrypted Secret
     }
   ]
 }
-```
 
 ## Security Architecture
 
 ### Defense in Depth
 
-```
 Layer 1: Network Security
 ├─ VPC endpoints for Secrets Manager
 ├─ VPC endpoints for KMS
@@ -393,13 +382,11 @@ Layer 5: Auditing
 ├─ CloudTrail logging
 ├─ CloudWatch monitoring
 └─ Compliance reporting
-```
 
 ## Key Management Best Practices
 
 ### Key Lifecycle
 
-```
 1. Key Creation
    ├─ Customer managed key
    ├─ Symmetric encryption
@@ -429,7 +416,6 @@ Layer 5: Auditing
    ├─ Key disabled immediately
    ├─ Verify no dependencies
    └─ Permanent deletion
-```
 
 ## Encryption Performance
 
@@ -467,14 +453,12 @@ Layer 5: Auditing
 - Rotation: Lambda execution costs
 
 **Example Monthly Cost**:
-```
 KMS Key: $1.00
 Secrets (5): $2.00
 KMS API calls (100K): $0.30
 Secrets API calls (50K): $0.25
 Lambda rotation: $0.20
 Total: ~$3.75/month
-```
 
 ### Cost Optimization
 
@@ -501,7 +485,6 @@ Total: ~$3.75/month
 ### CloudTrail Events
 
 **Key Events to Monitor**:
-```
 KMS Events:
 ├─ Decrypt: Secret access
 ├─ GenerateDataKey: Secret creation
@@ -515,7 +498,6 @@ Secrets Manager Events:
 ├─ RotateSecret: Rotation trigger
 ├─ DeleteSecret: Secret deletion
 └─ UpdateSecretVersionStage: Version changes
-```
 
 ### Security Alerts
 
@@ -546,7 +528,6 @@ Secrets Manager Events:
 - Long-term retention in S3
 
 **Audit Reports**:
-```
 Key Usage Report:
 ├─ Who accessed which keys
 ├─ When keys were used
@@ -558,7 +539,6 @@ Secret Access Report:
 ├─ By which principals
 ├─ From which sources
 └─ Access patterns
-```
 
 ## Disaster Recovery
 

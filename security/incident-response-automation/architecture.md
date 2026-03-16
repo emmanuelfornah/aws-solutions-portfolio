@@ -2,7 +2,6 @@
 
 ## Architecture Diagram
 
-```
 ┌────────────────────────────────────────────────────────────────────────────┐
 │                          AWS Account - Production                           │
 │                                                                             │
@@ -182,13 +181,11 @@
 │  │  └─────────────────────────────────────────────────────────────────┘│ │
 │  └──────────────────────────────────────────────────────────────────────┘ │
 └────────────────────────────────────────────────────────────────────────────┘
-```
 
 ## Incident Response Workflow
 
 ### Automated Response Flow
 
-```
 1. Detection
    ├── GuardDuty Finding: CryptoCurrency:EC2/BitcoinTool.B!DNS
    ├── Severity: HIGH
@@ -251,7 +248,6 @@
    └── Document findings
 
 Total Automated Response Time: ~10 seconds (excluding snapshot creation)
-```
 
 ## Lambda Function Architecture
 
@@ -450,7 +446,6 @@ def send_incident_notification(incident_id, instance_id, snapshot_ids):
         Subject=f"Security Incident: {incident_id}",
         Message=json.dumps(message, indent=2)
     )
-```
 
 ## CloudWatch Logs Analysis
 
@@ -463,14 +458,12 @@ fields @timestamp, @message
 | parse @message /Failed password for * from * port/
 | stats count() by user, source_ip
 | sort count desc
-```
 
 **Query 2: Privilege Escalation**
 ```sql
 fields @timestamp, eventName, userIdentity.arn, requestParameters
 | filter eventName in ["PutUserPolicy", "AttachUserPolicy", "CreateAccessKey", "PutRolePolicy"]
 | sort @timestamp desc
-```
 
 **Query 3: Data Exfiltration Indicators**
 ```sql
@@ -479,7 +472,6 @@ fields @timestamp, eventName, requestParameters.bucketName, sourceIPAddress
 | stats count() as download_count by sourceIPAddress, requestParameters.bucketName
 | filter download_count > 100
 | sort download_count desc
-```
 
 ## Best Practices Summary
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This lab demonstrates protecting web applications from common web exploits using AWS WAF (Web Application Firewall). The implementation includes creating WAF web ACLs with managed rule groups, configuring custom rules for rate limiting and geo-blocking, associating WAF with Application Load Balancer, testing rule effectiveness with simulated attacks, and monitoring blocked requests in CloudWatch.
+This project demonstrates protecting web applications from common web exploits using AWS WAF (Web Application Firewall). The implementation includes creating WAF web ACLs with managed rule groups, configuring custom rules for rate limiting and geo-blocking, associating WAF with Application Load Balancer, testing rule effectiveness with simulated attacks, and monitoring blocked requests in CloudWatch.
 
 ## AWS Services Used
 
@@ -144,12 +144,17 @@ Simulate attacks and verify blocking:
 - **geo-blocking-rules.json** - Geographic restrictions
 - **custom-rules.json** - Application-specific rules
 
-## Lab Metadata
+## Metadata
 
 - **Domain**: Security
 - **Complexity Level**: Intermediate
 - **Estimated Time**: 45 minutes
 - **AWS Services**: AWS WAF, ALB, CloudWatch, S3, CloudFormation
 - **Key Concepts**: Web application firewall, OWASP Top 10, DDoS protection, geo-blocking
-- **Certification Alignment**: AWS Certified Solutions Architect - Associate (WAF configuration), AWS Certified Security - Specialty (Web application security)
 
+## Real-World Application
+
+- **E-commerce protection**: Online stores use WAF to block SQL injection, XSS, and bot attacks that target checkout flows and user accounts
+- **DDoS mitigation**: Rate-based rules automatically block IP addresses exceeding request thresholds — first line of defense against volumetric attacks
+- **Compliance**: PCI-DSS requires web application firewalls for any internet-facing application that processes payment card data
+- **Bot management**: Media and ticketing platforms use WAF rules to block scrapers, credential stuffers, and automated purchasing bots

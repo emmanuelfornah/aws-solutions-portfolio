@@ -2,7 +2,7 @@
 
 ## Overview
 
-This lab demonstrates implementing comprehensive incident response procedures for AWS environments. The implementation includes capturing instance metadata for forensics, creating EBS snapshots for evidence preservation, analyzing CloudWatch logs for security events, isolating compromised instances with security groups, automating incident response with EventBridge rules, and deploying Lambda functions for automated threat response and remediation.
+This project demonstrates implementing comprehensive incident response procedures for AWS environments. The implementation includes capturing instance metadata for forensics, creating EBS snapshots for evidence preservation, analyzing CloudWatch logs for security events, isolating compromised instances with security groups, automating incident response with EventBridge rules, and deploying Lambda functions for automated threat response and remediation.
 
 ## AWS Services Used
 
@@ -606,6 +606,3 @@ fields @timestamp, eventName, userIdentity.arn, requestParameters
 
 **Complexity**: Advanced
 
-## Tags
-
-`Incident Response` `Security Automation` `Forensics` `EventBridge` `Lambda` `CloudWatch` `CloudTrail` `EC2` `EBS Snapshots` `Security Operations`

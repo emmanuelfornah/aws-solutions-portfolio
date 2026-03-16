@@ -2,7 +2,6 @@
 
 ## Architecture Diagram
 
-```
                           Internet Traffic
                                  │
                                  │ HTTP/HTTPS Requests
@@ -96,13 +95,11 @@
                     │  - CountedRequests       │
                     │  - Rule matches          │
                     └──────────────────────────┘
-```
 
 ## WAF Rule Evaluation Flow
 
 ### Request Processing Pipeline
 
-```
 Incoming Request
 │
 ├─ Step 1: Extract Request Components
@@ -139,7 +136,6 @@ Incoming Request
    ├─ Response: 403 Forbidden
    ├─ Log: CloudWatch Logs
    └─ Metric: BlockedRequests +1
-```
 
 ## Protection Layers
 
@@ -162,7 +158,6 @@ Incoming Request
     "Block": {}
   }
 }
-```
 
 **Protection Against**:
 - Distributed Denial of Service (DDoS)
@@ -195,7 +190,6 @@ Incoming Request
     "Block": {}
   }
 }
-```
 
 **Use Cases**:
 - Compliance requirements (GDPR, data residency)
@@ -219,7 +213,6 @@ Incoming Request
 - Session Fixation
 
 **Example Rules**:
-```
 SQL Injection Detection:
 - Pattern: ' OR '1'='1
 - Pattern: UNION SELECT
@@ -231,7 +224,6 @@ XSS Detection:
 - Pattern: javascript:
 - Pattern: onerror=
 - Pattern: onload=
-```
 
 #### Known Bad Inputs
 
@@ -268,7 +260,6 @@ XSS Detection:
     "Allow": {}
   }
 }
-```
 
 **Use Cases**:
 - Admin panel access
@@ -301,7 +292,6 @@ XSS Detection:
     "Block": {}
   }
 }
-```
 
 #### Header Validation
 
@@ -327,7 +317,6 @@ XSS Detection:
     "Block": {}
   }
 }
-```
 
 ## Rule Actions
 
@@ -351,7 +340,6 @@ XSS Detection:
     }
   }
 }
-```
 
 ### Allow Action
 
@@ -412,7 +400,6 @@ XSS Detection:
     "requestId": "request-uuid"
   }
 }
-```
 
 ### CloudWatch Metrics
 
@@ -430,7 +417,6 @@ XSS Detection:
 ### CloudWatch Alarms
 
 **Example Alarms**:
-```
 High Block Rate:
 - Metric: BlockedRequests
 - Threshold: > 1000 in 5 minutes
@@ -445,7 +431,6 @@ Potential Attack:
 - Metric: BlockedRequests (SQLi rules)
 - Threshold: > 50 in 5 minutes
 - Action: SNS notification + Lambda
-```
 
 ## Performance Considerations
 
@@ -473,7 +458,6 @@ Potential Attack:
 - Custom rule: 1-10 WCU depending on complexity
 
 **Example Calculation**:
-```
 Web ACL Capacity:
 ├─ Rate-based rule: 2 WCU
 ├─ Geo-blocking: 1 WCU
@@ -482,7 +466,6 @@ Web ACL Capacity:
 ├─ IP Reputation: 25 WCU
 ├─ Custom rules (5): 10 WCU
 └─ Total: 938 WCU (62% of quota)
-```
 
 ## Cost Considerations
 
@@ -501,14 +484,12 @@ Web ACL Capacity:
 - S3 storage: Standard S3 pricing
 
 **Example Monthly Cost**:
-```
 Web ACL: $5.00
 Rules (10): $10.00
 Managed Rules (3 groups): $30.00
 Requests (100M): $100.00
 Logging (50GB): $25.00
 Total: ~$170.00/month
-```
 
 ### Cost Optimization
 

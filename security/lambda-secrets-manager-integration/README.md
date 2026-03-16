@@ -2,7 +2,7 @@
 
 ## Overview
 
-This lab demonstrates secure data access patterns for AWS Lambda functions using Secrets Manager integration. The implementation includes configuring Lambda execution roles with least privilege permissions, retrieving secrets from Secrets Manager within Lambda code, implementing secret caching for performance optimization, handling secret rotation in Lambda functions, and monitoring secret access with CloudWatch Logs.
+This project demonstrates secure data access patterns for AWS Lambda functions using Secrets Manager integration. The implementation includes configuring Lambda execution roles with least privilege permissions, retrieving secrets from Secrets Manager within Lambda code, implementing secret caching for performance optimization, handling secret rotation in Lambda functions, and monitoring secret access with CloudWatch Logs.
 
 ## AWS Services Used
 
@@ -144,12 +144,17 @@ Measure caching impact:
 - **lambda-function.js** - Node.js Lambda code
 - **requirements.txt** - Python dependencies
 
-## Lab Metadata
+## Metadata
 
 - **Domain**: Security
 - **Complexity Level**: Intermediate
 - **Estimated Time**: 60 minutes
 - **AWS Services**: Lambda, Secrets Manager, KMS, IAM, CloudWatch, X-Ray
 - **Key Concepts**: Secure data access, secret caching, IAM roles, error handling
-- **Certification Alignment**: AWS Certified Developer - Associate (Lambda security), AWS Certified Solutions Architect - Associate (Secure application design)
 
+## Real-World Application
+
+- **Serverless database access**: Lambda functions accessing RDS, DynamoDB, or third-party APIs retrieve credentials from Secrets Manager at runtime — never hardcoded
+- **Secret caching**: High-throughput Lambda functions cache secrets locally to avoid Secrets Manager API calls on every invocation — reducing latency by 99%
+- **Credential rotation**: Applications using Secrets Manager automatically pick up rotated credentials without redeployment or downtime
+- **Third-party API keys**: SaaS integrations store API keys, OAuth tokens, and webhook secrets in Secrets Manager with IAM-controlled access

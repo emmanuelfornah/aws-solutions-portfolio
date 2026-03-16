@@ -2,7 +2,6 @@
 
 ## Architecture Diagram
 
-```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        Client Application                            │
 │                   (Web App / Mobile App / CLI)                       │
@@ -129,13 +128,11 @@
                │  - Resource access logs              │
                │  - Security auditing                 │
                └─────────────────────────────────────┘
-```
 
 ## Authentication Flow
 
 ### 1. User Authentication with OIDC Provider
 
-```
 User → OIDC Provider
 ├── Request: Authorization
 │   ├── response_type: id_token
@@ -148,7 +145,6 @@ User → OIDC Provider
 │   └── MFA (optional)
 └── Response: ID Token (JWT)
     └── Redirect: https://app.example.com/callback#id_token=eyJhbGc...
-```
 
 ### 2. JWT Token Structure
 
@@ -173,7 +169,6 @@ User → OIDC Provider
   },
   "signature": "base64url-encoded-signature"
 }
-```
 
 ### 3. AssumeRoleWithWebIdentity Request
 
@@ -183,17 +178,14 @@ aws sts assume-role-with-web-identity \
   --role-session-name user-session-12345 \
   --web-identity-token eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9... \
   --duration-seconds 3600
-```
 
 **Request Flow**:
-```
 Client → AWS STS
 ├── RoleArn: arn:aws:iam::123456789012:role/WebIdentityRole
 ├── RoleSessionName: user-session-12345
 ├── WebIdentityToken: eyJhbGc... (JWT from OIDC provider)
 ├── DurationSeconds: 3600 (1 hour)
 └── Policy: (optional) Additional restrictions
-```
 
 ### 4. STS Response with Temporary Credentials
 
@@ -213,13 +205,11 @@ Client → AWS STS
   "Provider": "auth.provider.com",
   "Audience": "client-id-abc123"
 }
-```
 
 ## Token Validation Process
 
 ### JWT Signature Verification
 
-```
 1. Retrieve JWKS (JSON Web Key Set)
    ├── URL: https://auth.provider.com/.well-known/jwks.json
    └── Keys: Public keys for signature verification
@@ -240,7 +230,6 @@ Client → AWS STS
    ├── exp (Expiration): Must be in the future
    ├── iat (Issued At): Must be in the past
    └── sub (Subject): User identifier
-```
 
 ### IAM Trust Policy Evaluation
 
@@ -265,7 +254,6 @@ Client → AWS STS
     }
   ]
 }
-```
 
 **Evaluation Steps**:
 1. Verify JWT signature is valid
@@ -279,7 +267,6 @@ Client → AWS STS
 
 ### Defense in Depth
 
-```
 Layer 1: OIDC Provider Security
 ├── Strong authentication (MFA)
 ├── Secure token generation
@@ -309,11 +296,9 @@ Layer 5: Resource Access
 ├── Resource-based policies
 ├── Service control policies
 └── CloudTrail logging
-```
 
 ### Credential Lifecycle
 
-```
 ┌─────────────────────────────────────────────────────────┐
 │                  Credential Lifecycle                    │
 └─────────────────────────────────────────────────────────┘
@@ -337,13 +322,11 @@ Layer 5: Resource Access
 5. Session End (t=expiration)
    └── Credentials expire automatically
        └── No cleanup required
-```
 
 ## Integration Patterns
 
 ### Pattern 1: Mobile Application
 
-```
 Mobile App
 ├── User Login → OIDC Provider
 ├── Receive JWT Token
@@ -354,7 +337,6 @@ Mobile App
 │   ├── DynamoDB: Store user data
 │   └── CloudWatch: Send logs
 └── Token Refresh (before expiration)
-```
 
 **Benefits**:
 - No backend server required
@@ -364,7 +346,6 @@ Mobile App
 
 ### Pattern 2: Web Application
 
-```
 Web App (Frontend)
 ├── User Login → OIDC Provider
 ├── Receive JWT Token
@@ -374,7 +355,6 @@ Web App (Frontend)
     ├── Cache Credentials
     ├── Access AWS Resources
     └── Return Data to Frontend
-```
 
 **Benefits**:
 - Centralized credential management
@@ -384,7 +364,6 @@ Web App (Frontend)
 
 ### Pattern 3: Multi-Tenant SaaS
 
-```
 SaaS Application
 ├── Tenant A User → OIDC Provider A
 │   └── Role: TenantA-UserRole
@@ -393,7 +372,6 @@ SaaS Application
 │   └── Role: TenantB-UserRole
 │       └── S3: s3://tenant-b-bucket/*
 └── Data Isolation by IAM Role
-```
 
 **Benefits**:
 - Tenant isolation
@@ -432,7 +410,6 @@ class TokenCache {
     return this.awsCredentials;
   }
 }
-```
 
 ### Performance Metrics
 
@@ -470,7 +447,6 @@ class TokenCache {
     }
   }
 }
-```
 
 ### Key Metrics to Monitor
 
@@ -504,7 +480,6 @@ jq -r '.exp' <<< $(echo "eyJhbGc..." | base64 -d)
 # Verify provider configuration
 aws iam get-open-id-connect-provider \
   --open-id-connect-provider-arn arn:aws:iam::123456789012:oidc-provider/auth.provider.com
-```
 
 ### Error: AccessDenied
 
@@ -528,7 +503,6 @@ jwt decode eyJhbGc...
 aws iam update-assume-role-policy \
   --role-name WebIdentityRole \
   --policy-document file://trust-policy.json
-```
 
 ## Best Practices Summary
 

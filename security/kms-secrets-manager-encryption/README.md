@@ -2,7 +2,7 @@
 
 ## Overview
 
-This lab demonstrates encrypting sensitive data using AWS Key Management Service (KMS) with AWS Secrets Manager. The implementation includes creating customer-managed KMS keys with key policies, storing secrets in Secrets Manager with KMS encryption, implementing automatic secret rotation, configuring IAM policies for secret access, and monitoring key usage with CloudTrail.
+This project demonstrates encrypting sensitive data using AWS Key Management Service (KMS) with AWS Secrets Manager. The implementation includes creating customer-managed KMS keys with key policies, storing secrets in Secrets Manager with KMS encryption, implementing automatic secret rotation, configuring IAM policies for secret access, and monitoring key usage with CloudTrail.
 
 ## AWS Services Used
 
@@ -144,12 +144,17 @@ Verify rotation functionality:
 - **rotation-config.json** - Rotation settings
 - **iam-policy.json** - Secret access policy
 
-## Lab Metadata
+## Metadata
 
 - **Domain**: Security
 - **Complexity Level**: Intermediate
 - **Estimated Time**: 40 minutes
 - **AWS Services**: KMS, Secrets Manager, IAM, Lambda, CloudTrail, CloudWatch
 - **Key Concepts**: Encryption, key management, secret rotation, access control
-- **Certification Alignment**: AWS Certified Solutions Architect - Associate (KMS encryption), AWS Certified Security - Specialty (Key management and secret protection)
 
+## Real-World Application
+
+- **Database credential rotation**: Production applications use Secrets Manager with automatic rotation to eliminate hardcoded database passwords
+- **Encryption at rest**: Every regulated industry (healthcare, finance, government) requires KMS-managed encryption for data at rest in S3, EBS, and RDS
+- **Envelope encryption**: Large-scale data platforms use envelope encryption to encrypt data with data keys, then encrypt data keys with KMS — enabling efficient bulk encryption
+- **Multi-account key management**: Enterprise organizations share KMS keys across accounts using key policies for centralized encryption governance

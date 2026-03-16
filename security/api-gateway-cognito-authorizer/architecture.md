@@ -2,7 +2,6 @@
 
 ## Architecture Diagram
 
-```
 ┌─────────────────────────────────────────────────────────────────┐
 │                         Client Application                       │
 │                    (Web/Mobile/CLI/Postman)                      │
@@ -55,13 +54,11 @@
                                    │  - Authorization decisions   │
                                    │  - API access logs           │
                                    └──────────────────────────────┘
-```
 
 ## Authentication Flow
 
 ### 1. User Authentication
 
-```
 Client → Cognito User Pool
 ├── Request: InitiateAuth
 │   ├── Username: user@example.com
@@ -72,7 +69,6 @@ Client → Cognito User Pool
     ├── AccessToken: eyJraWQiOiJ... (JWT)
     ├── RefreshToken: eyJjdHkiOiJ... (JWT)
     └── ExpiresIn: 3600 seconds
-```
 
 ### 2. JWT Token Structure
 
@@ -97,22 +93,18 @@ Client → Cognito User Pool
   },
   "signature": "..."
 }
-```
 
 ### 3. API Request with Authorization
 
-```
 Client → API Gateway
 ├── Request Headers:
 │   ├── Authorization: Bearer eyJraWQiOiJ...
 │   ├── Content-Type: application/json
 │   └── Accept: application/json
 └── Request Body: { "data": "..." }
-```
 
 ### 4. Token Validation Process
 
-```
 API Gateway Cognito Authorizer
 ├── 1. Extract JWT from Authorization header
 ├── 2. Decode JWT header and payload
@@ -129,7 +121,6 @@ API Gateway Cognito Authorizer
 └── 5. Authorization Decision
     ├── Valid: Allow request → Lambda
     └── Invalid: Return 401 Unauthorized
-```
 
 ## Component Details
 
@@ -172,14 +163,12 @@ API Gateway Cognito Authorizer
 ### API Gateway REST API
 
 **Endpoints**:
-```
 GET    /items           - List all items (requires auth)
 POST   /items           - Create item (requires auth)
 GET    /items/{id}      - Get item details (requires auth)
 PUT    /items/{id}      - Update item (requires auth)
 DELETE /items/{id}      - Delete item (requires auth)
 GET    /public/health   - Health check (no auth)
-```
 
 **Method Configuration**:
 - **Authorization**: Cognito User Pool Authorizer
@@ -209,13 +198,11 @@ GET    /public/health   - Health check (no auth)
     }
   }
 }
-```
 
 ## Security Architecture
 
 ### Defense in Depth
 
-```
 Layer 1: Network Security
 ├── API Gateway in AWS managed network
 ├── HTTPS/TLS 1.2+ encryption
@@ -244,7 +231,6 @@ Layer 5: Application Security
 ├── CloudWatch logging
 ├── Error handling (no sensitive data leakage)
 └── Audit trails
-```
 
 ### Token Security
 
@@ -254,7 +240,6 @@ Layer 5: Application Security
 - **Never**: URL parameters, logs, client-side code
 
 **Token Lifecycle**:
-```
 1. Issue (Cognito)
    ├── ID Token: 1 hour
    ├── Access Token: 1 hour
@@ -271,13 +256,11 @@ Layer 5: Application Security
 4. Revoke (Admin)
    ├── Disable user in Cognito
    └── Tokens invalid immediately
-```
 
 ## Request/Response Flow
 
 ### Successful Authenticated Request
 
-```
 1. Client Request
    POST /items
    Authorization: Bearer eyJraWQiOiJ...
@@ -303,11 +286,9 @@ Layer 5: Application Security
    Content-Type: application/json
    
    {"id": "item-123", "name": "New Item", "status": "created"}
-```
 
 ### Failed Unauthorized Request
 
-```
 1. Client Request
    POST /items
    (No Authorization header)
@@ -327,11 +308,9 @@ Layer 5: Application Security
    {"message": "Unauthorized"}
 
 Note: Lambda is NOT invoked, saving costs
-```
 
 ### Failed Invalid Token Request
 
-```
 1. Client Request
    POST /items
    Authorization: Bearer invalid-token-xyz
@@ -351,7 +330,6 @@ Note: Lambda is NOT invoked, saving costs
    Content-Type: application/json
    
    {"message": "Unauthorized"}
-```
 
 ## Performance Considerations
 
@@ -363,7 +341,6 @@ Note: Lambda is NOT invoked, saving costs
 - **Benefits**: Reduced latency, lower Cognito API calls
 
 **Cache Behavior**:
-```
 First Request (Cache Miss)
 ├── Validate token with Cognito: ~100-200ms
 ├── Cache authorization decision
@@ -372,7 +349,6 @@ First Request (Cache Miss)
 Subsequent Requests (Cache Hit)
 ├── Retrieve from cache: ~1-5ms
 └── Total latency: ~10-20ms
-```
 
 ### Optimization Strategies
 
@@ -387,7 +363,6 @@ Subsequent Requests (Cache Hit)
 ### CloudWatch Logs
 
 **API Gateway Logs**:
-```
 {
   "requestId": "request-uuid",
   "ip": "203.0.113.0",
@@ -402,7 +377,6 @@ Subsequent Requests (Cache Hit)
     "latency": 150
   }
 }
-```
 
 **Cognito Logs**:
 - Authentication attempts (success/failure)

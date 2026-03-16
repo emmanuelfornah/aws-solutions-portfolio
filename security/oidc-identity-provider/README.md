@@ -2,7 +2,7 @@
 
 ## Overview
 
-This lab demonstrates implementing an OpenID Connect (OIDC) identity provider in AWS IAM to enable federated authentication for web applications. The implementation includes creating an OIDC identity provider, configuring IAM roles with web identity federation, generating and validating JWT tokens, and using AssumeRoleWithWebIdentity to obtain short-term AWS credentials for secure access to AWS resources.
+This project demonstrates implementing an OpenID Connect (OIDC) identity provider in AWS IAM to enable federated authentication for web applications. The implementation includes creating an OIDC identity provider, configuring IAM roles with web identity federation, generating and validating JWT tokens, and using AssumeRoleWithWebIdentity to obtain short-term AWS credentials for secure access to AWS resources.
 
 ## AWS Services Used
 
@@ -303,6 +303,3 @@ STS operation for federated access:
 
 **Complexity**: Intermediate to Advanced
 
-## Tags
-
-`IAM` `OIDC` `Web Identity Federation` `STS` `JWT` `Authentication` `Security` `Federated Access`
