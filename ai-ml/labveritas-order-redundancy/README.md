@@ -132,3 +132,20 @@ This is a **prototype educational project** designed for synthetic data only.
 - No production EHR integration is implemented
 - No PHI is intentionally sent to the model
 - The module supports workflow review and routing, not diagnosis or independent clinical decision-making
+
+
+## Local prototype validation
+
+This module runs fully locally with synthetic data and does not call AWS services during validation.
+
+Run:
+
+```bash
+python ai-ml/labveritas-order-redundancy/test/test_end_to_end_validation.py
+```
+
+What it validates:
+- end-to-end `order_intake_handler` orchestration
+- Tier 1 overlap detection and upgrade detection heuristics
+- Tier 2 deterministic local classifier behavior for upgrade patterns
+- structured JSON workflow decisions (`proceed`, `flag_for_review`, `suggest_alternative`)
