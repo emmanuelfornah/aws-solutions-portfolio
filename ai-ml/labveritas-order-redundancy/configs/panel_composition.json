@@ -1,0 +1,48 @@
+{
+  "BMP": [
+    "glucose",
+    "calcium",
+    "sodium",
+    "potassium",
+    "chloride",
+    "co2",
+    "bun",
+    "creatinine"
+  ],
+  "LFT": [
+    "albumin",
+    "total_protein",
+    "alkaline_phosphatase",
+    "alt",
+    "ast",
+    "total_bilirubin"
+  ],
+  "CMP": [
+    "glucose",
+    "calcium",
+    "sodium",
+    "potassium",
+    "chloride",
+    "co2",
+    "bun",
+    "creatinine",
+    "albumin",
+    "total_protein",
+    "alkaline_phosphatase",
+    "alt",
+    "ast",
+    "total_bilirubin"
+  ],
+  "GLUCOSE": [
+    "glucose"
+  ],
+  "POTASSIUM": [
+    "potassium"
+  ],
+  "ALT": [
+    "alt"
+  ],
+  "AST": [
+    "ast"
+  ]
+}
