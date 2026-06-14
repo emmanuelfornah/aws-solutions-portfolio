@@ -30,7 +30,7 @@ def _normalize_order(order_payload):
         "encounter_id": order_payload.get("encounter_id", "encounter-001"),
         "order_code": (order_payload.get("order_code") or "").upper(),
         "analytes": list(order_payload.get("analytes") or []),
-        "timestamp": order_payload.get("timestamp", datetime.now(timezone.utc).isoformat()),
+        "timestamp": order_payload.get("timestamp", datetime.now(tz=timezone.utc).isoformat()),
     }
 
 

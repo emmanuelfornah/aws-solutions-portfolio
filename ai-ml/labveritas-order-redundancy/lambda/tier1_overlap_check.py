@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Iterable, List, Sequence
+from typing import Iterable, List, Optional, Sequence
 
 
 def normalize_analyte_name(analyte: str) -> str:
@@ -53,8 +53,8 @@ def _is_likely_upgrade(
 def classify_overlap(
     new_order_analytes: Sequence[str],
     prior_analytes: Sequence[str],
-    new_order_code: str | None = None,
-    prior_order_code: str | None = None,
+    new_order_code: Optional[str] = None,
+    prior_order_code: Optional[str] = None,
 ):
     overlapping_analytes = compare_new_to_prior_analytes(new_order_analytes, prior_analytes)
     overlap_ratio = compute_overlap_ratio(new_order_analytes, overlapping_analytes)
