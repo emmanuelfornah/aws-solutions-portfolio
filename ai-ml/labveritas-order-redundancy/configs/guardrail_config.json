@@ -1,0 +1,33 @@
+{
+  "name": "labveritas-order-redundancy-guardrail",
+  "description": "Guardrail configuration for de-identified laboratory order redundancy reasoning.",
+  "policies": {
+    "denied_topics": [
+      "diagnosis generation",
+      "treatment recommendation",
+      "prescription instruction",
+      "legal advice"
+    ],
+    "word_filters": [
+      "social security number",
+      "credit card",
+      "password"
+    ],
+    "sensitive_information": {
+      "mask_types": [
+        "EMAIL",
+        "PHONE",
+        "NAME",
+        "ADDRESS"
+      ]
+    },
+    "prompt_injection_detection": true,
+    "contextual_grounding": true,
+    "output_must_be_json": true
+  },
+  "notes": {
+    "intended_use": "Routing and utilization review support for synthetic laboratory order scenarios.",
+    "phi_handling": "Prompts should be de-identified before model invocation; masking remains defense in depth.",
+    "fallback_behavior": "Low-confidence or invalid model output should route to manual review."
+  }
+}
