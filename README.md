@@ -60,7 +60,7 @@ Hands-on AWS projects spanning compute, databases, security, serverless, CI/CD, 
 | [eventbridge-decoupled-architecture](serverless/eventbridge-decoupled-architecture/) | EventBridge, WebSocket API | Event-driven microservices with real-time updates |
 | [kinesis-streaming-pipeline](serverless/kinesis-streaming-pipeline/) | Kinesis, DynamoDB Streams, OpenSearch | Real-time stream processing and analytics |
 
-### AI/ML (8 projects)
+### AI/ML (9 projects)
 | Project | Services | Description |
 |---------|----------|-------------|
 | [bedrock-console-introduction](ai-ml/bedrock-console-introduction/) | Bedrock | Foundation model exploration and parameter tuning |
@@ -71,6 +71,7 @@ Hands-on AWS projects spanning compute, databases, security, serverless, CI/CD, 
 | [langchain-ai-development](ai-ml/langchain-ai-development/) | Bedrock, LangChain | Prompt templates, output parsers, document loaders |
 | [langchain-chatbots](ai-ml/langchain-chatbots/) | Bedrock, LangChain, DynamoDB | Conversational AI with memory and Streamlit GUI |
 | [bedrock-guardrails-security](ai-ml/bedrock-guardrails-security/) | Bedrock Guardrails | Content filtering, PII detection, prompt injection mitigation |
+| [labveritas-order-redundancy](ai-ml/labveritas-order-redundancy/) | Bedrock, Bedrock Guardrails, Lambda, DynamoDB, SNS | Healthcare-focused analyte-level lab order redundancy detection with responsible AI controls |
 
 ## Tech Stack
 
