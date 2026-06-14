@@ -1,14 +1,18 @@
 # Test Results
 
 ## Status
-Pending execution.
+Completed (local synthetic validation).
 
-## Planned validation areas
-- Tier 1 no-overlap routing
-- Tier 1 overlap detection accuracy
-- Tier 2 upgrade-scenario recommendation quality
-- JSON response structure validation
-- guardrail-aligned prompt/output behavior
+## Executed validation
+- `python ai-ml/labveritas-order-redundancy/test/test_end_to_end_validation.py`
+
+## Summary
+- Validated Tier 1 and Tier 2 workflow orchestration across the 3 synthetic scenarios in `test_scenarios.json`.
+- Verified expected routing outcomes:
+  - `S1` → `proceed`
+  - `S2` → `flag_for_review`
+  - `S3` → `suggest_alternative`
+- Confirmed no cloud credentials are required for local execution.
 
 ## Notes
-This file will be updated after synthetic scenario execution and result review.
+Prototype remains synthetic-data-only and portfolio-safe (no diagnosis or treatment guidance).
