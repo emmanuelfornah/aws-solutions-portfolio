@@ -1,0 +1,45 @@
+[
+  {
+    "scenario_id": "S1",
+    "description": "No analyte overlap",
+    "new_order": {
+      "order_code": "ALT",
+      "analytes": ["alt"]
+    },
+    "prior_order": {
+      "order_code": "GLUCOSE",
+      "analytes": ["glucose"]
+    },
+    "expected_decision": "proceed"
+  },
+  {
+    "scenario_id": "S2",
+    "description": "Direct component overlap with BMP",
+    "new_order": {
+      "order_code": "GLUCOSE",
+      "analytes": ["glucose"]
+    },
+    "prior_order": {
+      "order_code": "BMP",
+      "analytes": ["glucose", "calcium", "sodium", "potassium", "chloride", "co2", "bun", "creatinine"]
+    },
+    "expected_decision": "flag_for_review"
+  },
+  {
+    "scenario_id": "S3",
+    "description": "Potential BMP to CMP upgrade scenario",
+    "new_order": {
+      "order_code": "CMP",
+      "analytes": [
+        "glucose", "calcium", "sodium", "potassium", "chloride",
+        "co2", "bun", "creatinine", "albumin", "total_protein",
+        "alkaline_phosphatase", "alt", "ast", "total_bilirubin"
+      ]
+    },
+    "prior_order": {
+      "order_code": "BMP",
+      "analytes": ["glucose", "calcium", "sodium", "potassium", "chloride", "co2", "bun", "creatinine"]
+    },
+    "expected_decision": "suggest_alternative"
+  }
+]
