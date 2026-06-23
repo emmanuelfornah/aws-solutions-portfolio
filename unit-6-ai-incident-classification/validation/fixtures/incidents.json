@@ -1,0 +1,62 @@
+[
+  {
+    "incident_id": "INC-001",
+    "summary": "GuardDuty finding Backdoor:EC2/C&CActivity.B from production web tier",
+    "expected_category": "COMPROMISED_INSTANCE"
+  },
+  {
+    "incident_id": "INC-002",
+    "summary": "CloudTrail shows repeated UnauthorizedOperation for iam:CreateAccessKey",
+    "expected_category": "CREDENTIAL_ABUSE"
+  },
+  {
+    "incident_id": "INC-003",
+    "summary": "S3 GetObject burst with 500 downloads from unknown IP in 2 minutes",
+    "expected_category": "DATA_EXFILTRATION"
+  },
+  {
+    "incident_id": "INC-004",
+    "summary": "GuardDuty CryptoCurrency:EC2/BitcoinTool.B activity on analytics instance",
+    "expected_category": "MALWARE_ACTIVITY"
+  },
+  {
+    "incident_id": "INC-005",
+    "summary": "Root account login from unusual geolocation and API key creation",
+    "expected_category": "UNAUTHORIZED_ACCESS"
+  },
+  {
+    "incident_id": "INC-006",
+    "summary": "Failed console login attempts from known corporate VPN endpoint",
+    "expected_category": "BENIGN"
+  },
+  {
+    "incident_id": "INC-007",
+    "summary": "CloudTrail AccessDenied spikes across multiple IAM principals",
+    "expected_category": "UNAUTHORIZED_ACCESS"
+  },
+  {
+    "incident_id": "INC-008",
+    "summary": "GuardDuty Trojan:EC2/DNSDataExfiltration finding on bastion host",
+    "expected_category": "MALWARE_ACTIVITY"
+  },
+  {
+    "incident_id": "INC-009",
+    "summary": "Abnormal outbound transfer to foreign region bucket from finance account",
+    "expected_category": "DATA_EXFILTRATION"
+  },
+  {
+    "incident_id": "INC-010",
+    "summary": "Known penetration test window triggered expected GuardDuty scans",
+    "expected_category": "BENIGN"
+  },
+  {
+    "incident_id": "INC-011",
+    "summary": "IAM user policy changed to AdministratorAccess without change request",
+    "expected_category": "CREDENTIAL_ABUSE"
+  },
+  {
+    "incident_id": "INC-012",
+    "summary": "EC2 instance replaced outbound SG and started Tor-like traffic pattern",
+    "expected_category": "COMPROMISED_INSTANCE"
+  }
+]

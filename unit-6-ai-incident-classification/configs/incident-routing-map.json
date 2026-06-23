@@ -1,0 +1,16 @@
+{
+  "routingMap": {
+    "COMPROMISED_INSTANCE": "SECOPS",
+    "MALWARE_ACTIVITY": "SECOPS",
+    "UNAUTHORIZED_ACCESS": "IAM_TEAM",
+    "CREDENTIAL_ABUSE": "IAM_TEAM",
+    "DATA_EXFILTRATION": "CLOUD_PLATFORM",
+    "BENIGN": "SOC_L1"
+  },
+  "severityPolicy": {
+    "CRITICAL": "immediate_page",
+    "HIGH": "15_min_sla",
+    "MEDIUM": "60_min_sla",
+    "LOW": "4_hour_sla"
+  }
+}

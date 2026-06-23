@@ -1,0 +1,46 @@
+{
+  "Comment": "AI-driven incident classification and automated routing",
+  "StartAt": "ClassifyIncident",
+  "States": {
+    "ClassifyIncident": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:ClassifyIncidentWithBedrock",
+      "Next": "RouteIncident"
+    },
+    "RouteIncident": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:RouteIncidentActions",
+      "Next": "HighSeverity?"
+    },
+    "HighSeverity?": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.classification.severity",
+          "StringEquals": "CRITICAL",
+          "Next": "PageOnCall"
+        },
+        {
+          "Variable": "$.classification.severity",
+          "StringEquals": "HIGH",
+          "Next": "PageOnCall"
+        }
+      ],
+      "Default": "CreateTicket"
+    },
+    "PageOnCall": {
+      "Type": "Pass",
+      "Result": {
+        "notification": "oncall_page_triggered"
+      },
+      "Next": "CreateTicket"
+    },
+    "CreateTicket": {
+      "Type": "Pass",
+      "Result": {
+        "ticket": "incident_ticket_created"
+      },
+      "End": true
+    }
+  }
+}

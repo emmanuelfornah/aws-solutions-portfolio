@@ -1,0 +1,8 @@
+{
+  "source": ["aws.guardduty", "aws.cloudtrail", "aws.securityhub"],
+  "detail-type": ["GuardDuty Finding", "AWS API Call via CloudTrail", "Security Hub Findings - Imported"],
+  "detail": {
+    "severity": [4, 5, 6, 7, 8, 9]
+  },
+  "Description": "EventBridge rule for routing security findings into AI incident triage"
+}

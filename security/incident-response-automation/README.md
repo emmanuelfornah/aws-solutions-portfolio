@@ -606,3 +606,61 @@ fields @timestamp, eventName, userIdentity.arn, requestParameters
 
 **Complexity**: Advanced
 
+## Unit 6 AI Enhancement: Automated Incident Classification
+
+This repository now includes an AI-driven decisioning extension that classifies incoming incident events and routes them to the appropriate team with recommended actions.
+
+### Problem Statement and Success Criteria
+
+- **Problem**: Existing event-driven incident response detects and triggers actions, but triage still depends on manual interpretation of findings.
+- **Goal**: Automatically classify incidents and route them to the right responders to reduce mean time to triage (MTTT) and improve consistency.
+- **Success Criteria**:
+  - Classification accuracy >= 85% on labeled validation set
+  - P95 triage latency <= 5 seconds for Lambda classification + routing
+  - 100% of high/critical incidents routed with explicit action plan
+
+### AI Components Added
+
+- `application/incident_classifier.py`  
+  Lambda that invokes Amazon Bedrock (`bedrock-runtime:converse`) and returns structured JSON with category, severity, confidence, routed team, and recommended actions.
+- `application/route_incident.py`  
+  Lambda that applies routing actions and emits an `IncidentRouted` event to EventBridge.
+- `state-machine/incident-ai-triage.json`  
+  Step Functions workflow: classify -> route -> high-severity decision branch.
+
+### Deployment
+
+1. Deploy baseline incident response resources:
+   ```bash
+   ./scripts/deploy-ir-infrastructure.sh
+   ```
+2. Deploy AI classification workflow:
+   ```bash
+   ./scripts/deploy-ai-incident-classifier.sh
+   ```
+3. Configure detection rules:
+   ```bash
+   ./scripts/configure-eventbridge-rules.sh
+   ```
+4. Test classifier with sample event:
+   ```bash
+   ./scripts/test-ai-incident-classifier.sh
+   ```
+
+### Evaluation and Validation
+
+- Evaluation dataset: `validation/fixtures/incidents.json`
+- Model predictions: `validation/fixtures/predictions.json`
+- Evaluation script:
+  ```bash
+  python validation/evaluate_classifier.py
+  ```
+- Output report: `validation/validation-results.json`
+
+### Assignment Artifacts in This Project
+
+- Comprehensive report source: `UNIT6_ASSIGNMENT_REPORT.md`
+- AI workflow code: `application/`
+- Workflow definition: `state-machine/incident-ai-triage.json`
+- Config files: `configs/`
+- Validation artifacts: `validation/`

@@ -1,0 +1,14 @@
+[
+  {"incident_id": "INC-001", "predicted_category": "COMPROMISED_INSTANCE"},
+  {"incident_id": "INC-002", "predicted_category": "CREDENTIAL_ABUSE"},
+  {"incident_id": "INC-003", "predicted_category": "DATA_EXFILTRATION"},
+  {"incident_id": "INC-004", "predicted_category": "MALWARE_ACTIVITY"},
+  {"incident_id": "INC-005", "predicted_category": "UNAUTHORIZED_ACCESS"},
+  {"incident_id": "INC-006", "predicted_category": "BENIGN"},
+  {"incident_id": "INC-007", "predicted_category": "UNAUTHORIZED_ACCESS"},
+  {"incident_id": "INC-008", "predicted_category": "MALWARE_ACTIVITY"},
+  {"incident_id": "INC-009", "predicted_category": "DATA_EXFILTRATION"},
+  {"incident_id": "INC-010", "predicted_category": "UNAUTHORIZED_ACCESS"},
+  {"incident_id": "INC-011", "predicted_category": "CREDENTIAL_ABUSE"},
+  {"incident_id": "INC-012", "predicted_category": "COMPROMISED_INSTANCE"}
+]

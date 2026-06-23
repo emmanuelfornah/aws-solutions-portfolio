@@ -1,0 +1,105 @@
+{
+  "dataset_size": 12,
+  "accuracy": 0.9167,
+  "macro_precision": 0.9444,
+  "macro_recall": 0.9167,
+  "macro_f1": 0.9111,
+  "correct_predictions": 11,
+  "misclassified_count": 1,
+  "per_class_metrics": {
+    "BENIGN": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "support": 2
+    },
+    "COMPROMISED_INSTANCE": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2
+    },
+    "CREDENTIAL_ABUSE": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2
+    },
+    "DATA_EXFILTRATION": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2
+    },
+    "MALWARE_ACTIVITY": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2
+    },
+    "UNAUTHORIZED_ACCESS": {
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8,
+      "support": 2
+    }
+  },
+  "confusion_matrix": {
+    "BENIGN": {
+      "BENIGN": 1,
+      "COMPROMISED_INSTANCE": 0,
+      "CREDENTIAL_ABUSE": 0,
+      "DATA_EXFILTRATION": 0,
+      "MALWARE_ACTIVITY": 0,
+      "UNAUTHORIZED_ACCESS": 1
+    },
+    "COMPROMISED_INSTANCE": {
+      "BENIGN": 0,
+      "COMPROMISED_INSTANCE": 2,
+      "CREDENTIAL_ABUSE": 0,
+      "DATA_EXFILTRATION": 0,
+      "MALWARE_ACTIVITY": 0,
+      "UNAUTHORIZED_ACCESS": 0
+    },
+    "CREDENTIAL_ABUSE": {
+      "BENIGN": 0,
+      "COMPROMISED_INSTANCE": 0,
+      "CREDENTIAL_ABUSE": 2,
+      "DATA_EXFILTRATION": 0,
+      "MALWARE_ACTIVITY": 0,
+      "UNAUTHORIZED_ACCESS": 0
+    },
+    "DATA_EXFILTRATION": {
+      "BENIGN": 0,
+      "COMPROMISED_INSTANCE": 0,
+      "CREDENTIAL_ABUSE": 0,
+      "DATA_EXFILTRATION": 2,
+      "MALWARE_ACTIVITY": 0,
+      "UNAUTHORIZED_ACCESS": 0
+    },
+    "MALWARE_ACTIVITY": {
+      "BENIGN": 0,
+      "COMPROMISED_INSTANCE": 0,
+      "CREDENTIAL_ABUSE": 0,
+      "DATA_EXFILTRATION": 0,
+      "MALWARE_ACTIVITY": 2,
+      "UNAUTHORIZED_ACCESS": 0
+    },
+    "UNAUTHORIZED_ACCESS": {
+      "BENIGN": 0,
+      "COMPROMISED_INSTANCE": 0,
+      "CREDENTIAL_ABUSE": 0,
+      "DATA_EXFILTRATION": 0,
+      "MALWARE_ACTIVITY": 0,
+      "UNAUTHORIZED_ACCESS": 2
+    }
+  },
+  "misclassified_examples": [
+    {
+      "incident_id": "INC-010",
+      "expected": "BENIGN",
+      "predicted": "UNAUTHORIZED_ACCESS",
+      "summary": "Known penetration test window triggered expected GuardDuty scans"
+    }
+  ]
+}

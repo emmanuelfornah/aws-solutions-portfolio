@@ -1,0 +1,27 @@
+{
+  "source": ["aws.guardduty"],
+  "detail-type": ["GuardDuty Finding"],
+  "detail": {
+    "severity": [7, 8, 9],
+    "type": [
+      {"prefix": "CryptoCurrency:EC2"},
+      {"prefix": "Backdoor:EC2"},
+      {"prefix": "Trojan:EC2"},
+      {"prefix": "UnauthorizedAccess:EC2"}
+    ],
+    "resource": {
+      "resourceType": ["Instance"]
+    }
+  },
+  "Description": "EventBridge rule pattern for detecting compromised EC2 instances",
+  "Notes": {
+    "Severity": "7-9 represents HIGH and CRITICAL findings",
+    "FindingTypes": [
+      "CryptoCurrency:EC2/* - Cryptocurrency mining activity",
+      "Backdoor:EC2/* - Backdoor or C&C communication",
+      "Trojan:EC2/* - Trojan activity detected",
+      "UnauthorizedAccess:EC2/* - Unauthorized access attempts"
+    ],
+    "Action": "Triggers Lambda function to isolate instance automatically"
+  }
+}
