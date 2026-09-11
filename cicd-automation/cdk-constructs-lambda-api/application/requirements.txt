@@ -1,9 +1,9 @@
 # AWS CDK Core Library
-aws-cdk-lib==2.100.0
+aws-cdk-lib==2.253.0
 
 # CDK Constructs Library
 constructs>=10.0.0,<11.0.0
 
 # Testing Dependencies
-pytest==7.4.3
+pytest==9.0.3
 pytest-cov==4.1.0

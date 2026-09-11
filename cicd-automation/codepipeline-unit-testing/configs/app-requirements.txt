@@ -2,8 +2,8 @@
 # Install with: pip install -r app-requirements.txt
 
 # Web Framework
-Flask==2.3.3
-Werkzeug==2.3.7
+Flask==3.1.3
+Werkzeug==3.1.6
 
 # AWS SDK for Python
 boto3==1.28.25
@@ -16,16 +16,16 @@ PyYAML==6.0.1
 python-dateutil==2.8.2
 
 # WSGI HTTP Server for Production
-gunicorn==21.2.0
+gunicorn==23.0.0
 
 # Environment Variable Management
-python-dotenv==1.0.0
+python-dotenv==1.2.2
 
 # Request Handling
-requests==2.31.0
+requests==2.33.0
 
 # JSON Web Token Support (if needed for auth)
-PyJWT==2.8.0
+PyJWT==2.13.0
 
 # Logging Enhancements
 python-json-logger==2.0.7
