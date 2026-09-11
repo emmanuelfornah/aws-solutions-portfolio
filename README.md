@@ -10,6 +10,25 @@
 | [healthlab-portal](https://github.com/emmanuelfornah/healthlab-portal) | Serverless HIPAA-aligned patterns — Cognito, Step Functions, WAF/GuardDuty/Security Hub, X-Ray |
 | [pedalworks-serverless-microservices](https://github.com/emmanuelfornah/pedalworks-serverless-microservices) | Monolith-to-microservices decomposition, React frontend, SAM, GitHub OIDC CI/CD |
 
+## Certifications
+
+**Exam-based:**
+- AWS Certified Solutions Architect – Associate (exp. Aug 2029)
+- AWS Certified Developer – Associate (exp. Sep 2029)
+- AWS Certified AI Practitioner (exp. Sep 2028)
+- AWS Certified Cloud Practitioner (exp. Sep 2029)
+- HashiCorp Certified: Terraform Associate (003) (exp. Dec 2027)
+
+**Program completion:**
+- AWS Cloud Institute — Cloud Application Developer Graduate
+
+**Additional training (The Linux Foundation):** Linux fundamentals (LFS101), Linux
+system administration (LFS207), Kubernetes (LFS158), containers (LFS253), DevOps/SRE
+fundamentals and continuous delivery (LFS162, LFS261), cloud technician essentials
+(LFS203)
+
+Verification: [Credly profile](https://www.credly.com/users/emmanuel-fornah)
+
 ## Projects by Domain
 
 ### Compute (7 projects)
