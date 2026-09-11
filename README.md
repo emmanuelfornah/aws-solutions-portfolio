@@ -1,6 +1,14 @@
 # AWS Solutions Portfolio
 
-Hands-on AWS projects spanning compute, databases, security, serverless, CI/CD, and AI/ML — organized by service domain.
+45+ hands-on AWS projects spanning compute, databases, security, serverless, CI/CD, and AI/ML, built during AWS Cloud Institute coursework — every project here was actually deployed and verified, not just followed along with in a video. This repo is the breadth layer of my AWS work; see **Flagship Projects** below for independently-designed, production-style systems built after this coursework, where the architecture decisions are mine.
+
+## Flagship Projects (start here)
+
+| Project | What it demonstrates |
+|---|---|
+| [salon-booking-app](https://github.com/emmanuelfornah/AWS-EKS-CICD-CAPSTONE) | EKS→EC2 migration, Terraform, blue/green CodeDeploy, RDS IAM auth, documented cost/architecture tradeoffs |
+| [healthlab-portal](https://github.com/emmanuelfornah/healthlab-portal) | Serverless HIPAA-aligned patterns — Cognito, Step Functions, WAF/GuardDuty/Security Hub, X-Ray |
+| [pedalworks-serverless-microservices](https://github.com/emmanuelfornah/pedalworks-serverless-microservices) | Monolith-to-microservices decomposition, React frontend, SAM, GitHub OIDC CI/CD |
 
 ## Projects by Domain
 
