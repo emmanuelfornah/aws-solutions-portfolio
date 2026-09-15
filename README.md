@@ -1,16 +1,24 @@
 # AWS Solutions Portfolio
 
-45+ hands-on AWS projects spanning compute, databases, security, serverless, CI/CD, and AI/ML, built during AWS Cloud Institute coursework — every project here was actually deployed and verified, not just followed along with in a video. This repo is the breadth layer of my AWS work; see **Flagship Projects** below for independently-designed, production-style systems built after this coursework, where the architecture decisions are mine.
+A hands-on AWS project portfolio spanning compute, databases, security, serverless, CI/CD, and AI/ML, built during AWS Cloud Institute coursework and alongside ongoing graduate study in cloud computing — every project here was actually deployed and verified, not just followed along with in a video. This repo is the breadth layer of my cloud work; see **Flagship Projects** below for independently-designed, production-style systems built after this coursework, where the architecture decisions are mine.
 
 ## Flagship Projects (start here)
 
-| Project | What it demonstrates |
-|---|---|
-| [salon-booking-app](https://github.com/emmanuelfornah/AWS-EKS-CICD-CAPSTONE) | EKS→EC2 migration, Terraform, blue/green CodeDeploy, RDS IAM auth, documented cost/architecture tradeoffs |
-| [healthlab-portal](https://github.com/emmanuelfornah/healthlab-portal) | Serverless HIPAA-aligned patterns — Cognito, Step Functions, WAF/GuardDuty/Security Hub, X-Ray |
-| [pedalworks-serverless-microservices](https://github.com/emmanuelfornah/pedalworks-serverless-microservices) | Monolith-to-microservices decomposition, React frontend, SAM, GitHub OIDC CI/CD |
+| Project | What it demonstrates | Live |
+|---|---|---|
+| [deployment-evolution](https://github.com/emmanuelfornah/deployment-evolution) | A live, production system, not a demo: Terraform-provisioned EC2 blue/green behind an ALB with Route 53 + ACM, RDS with IAM database auth, a full GitHub → CodePipeline → CodeBuild → CodeDeploy pipeline, and the judgment call to migrate off EKS after a real cost/traffic review — the whole arc evidenced in git history, screenshots, and a live URL. | [appointments.emmanuelfornah.com](https://appointments.emmanuelfornah.com) |
+| [aws-compute-evolution](https://github.com/emmanuelfornah/aws-compute-evolution) | The general case behind that migration, worked out concretely: one small app deployed 5 different ways (EC2, Lambda, Docker/ECR, ECS Fargate, EKS), with a real cost/complexity comparison matrix instead of a hand-wavy "it depends." | — (comparison demos, not left running) |
+| [healthlab-portal](https://github.com/emmanuelfornah/healthlab-portal) | Serverless, HIPAA-aligned patterns built and reasoned about honestly: Cognito auth, Step Functions orchestration, WAF/GuardDuty/Security Hub for defense in depth, X-Ray tracing — with an explicit scope note on what "HIPAA-aligned" does and doesn't mean here. | [healthlabportal.com](https://healthlabportal.com) |
+| [pedalworks-serverless-microservices](https://github.com/emmanuelfornah/pedalworks-serverless-microservices) | A real monolith-to-microservices decomposition: a React/Vite frontend, API Gateway + Lambda services, DynamoDB, SAM-managed infrastructure as code, and GitHub OIDC CI/CD — no long-lived AWS keys anywhere in the pipeline. | [d34bjjo7beufyg.cloudfront.net](https://d34bjjo7beufyg.cloudfront.net) |
 
-## Certifications
+These four build on the breadth below — same AWS services, applied to
+harder, self-directed problems where the architecture decisions were
+mine to make and defend.
+
+## Education & Certifications
+
+**Graduate study (in progress):**
+- University of Maryland Global Campus — M.S. in Cloud Computing Systems (4.0 GPA; expected October 2026)
 
 **Exam-based:**
 - AWS Certified Solutions Architect – Associate (exp. Aug 2029)
