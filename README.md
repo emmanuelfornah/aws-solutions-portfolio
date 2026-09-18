@@ -15,6 +15,12 @@ These four build on the breadth below — same AWS services, applied to
 harder, self-directed problems where the architecture decisions were
 mine to make and defend.
 
+**A second, deliberately separate track:** everything above is AWS-native.
+[`enterprise-infrastructure-portfolio`](https://github.com/emmanuelfornah/enterprise-infrastructure-portfolio)
+covers traditional, tool-agnostic enterprise infrastructure — Jenkins,
+Nexus, Docker, Ansible, Kubernetes, Terraform — for the environments
+that aren't pure cloud-native shops, healthcare IT included.
+
 ## Education & Certifications
 
 **Graduate study (in progress):**
