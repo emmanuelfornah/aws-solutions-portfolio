@@ -6,7 +6,7 @@ A hands-on AWS project portfolio spanning compute, databases, security, serverle
 
 | Project | What it demonstrates | Live |
 |---|---|---|
-| [deployment-evolution](https://github.com/emmanuelfornah/deployment-evolution) | A live, production system, not a demo: Terraform-provisioned EC2 blue/green behind an ALB with Route 53 + ACM, RDS with IAM database auth, a full GitHub → CodePipeline → CodeBuild → CodeDeploy pipeline, and the judgment call to migrate off EKS after a real cost/traffic review — the whole arc evidenced in git history, screenshots, and a live URL. | [appointments.emmanuelfornah.com](https://appointments.emmanuelfornah.com) |
+| [deployment-evolution](https://github.com/emmanuelfornah/deployment-evolution) | A live, production system, not a demo: Terraform-provisioned EC2 blue/green behind an ALB with Route 53 + ACM, Multi-AZ RDS with IAM database auth, a full GitHub → CodePipeline → CodeBuild → CodeDeploy pipeline, CloudWatch SLOs with error-budget alerting and cost-allocation tags, and the judgment call to migrate off EKS after a real cost/traffic review — the whole arc evidenced in git history, screenshots, and a live URL. | [appointments.emmanuelfornah.com](https://appointments.emmanuelfornah.com) |
 | [aws-compute-evolution](https://github.com/emmanuelfornah/aws-compute-evolution) | The general case behind that migration, worked out concretely: one small app deployed 5 different ways (EC2, Lambda, Docker/ECR, ECS Fargate, EKS), with a real cost/complexity comparison matrix instead of a hand-wavy "it depends." | — (comparison demos, not left running) |
 | [healthlab-portal](https://github.com/emmanuelfornah/healthlab-portal) | A working serverless patient-onboarding pipeline: Cognito auth, Step Functions orchestrating Rekognition identity match + Textract OCR + a mock eligibility check, results mapped to FHIR R4. Backed by real CI/CD (GitHub Actions, OIDC deploy) and HIPAA-aligned security patterns — Cognito, WAF/GuardDuty/Security Hub, X-Ray tracing, a documented STRIDE threat model — with an explicit scope note on what "HIPAA-aligned" does and doesn't mean here. Domain background: a [roadmapped rules engine](https://github.com/emmanuelfornah/healthlab-portal#roadmap) for detecting duplicate/redundant lab orders, grounded in real clinical lab experience — designed, not yet built. | [healthlabportal.com](https://healthlabportal.com) |
 | [pedalworks](https://github.com/emmanuelfornah/pedalworks) | A real monolith-to-microservices decomposition: a React/Vite frontend, API Gateway + Lambda services, DynamoDB, SAM-managed infrastructure as code, and GitHub OIDC CI/CD — no long-lived AWS keys anywhere in the pipeline. | [pedalworks.emmanuelfornah.com](https://pedalworks.emmanuelfornah.com) |
@@ -16,10 +16,10 @@ harder, self-directed problems where the architecture decisions were
 mine to make and defend.
 
 **A second, deliberately separate track:** everything above is AWS-native.
-[`enterprise-infrastructure-portfolio`](https://github.com/emmanuelfornah/enterprise-infrastructure-portfolio)
-covers traditional, tool-agnostic enterprise infrastructure — Jenkins,
-Nexus, Docker, Ansible, Kubernetes, Terraform — for the environments
-that aren't pure cloud-native shops, healthcare IT included.
+[`jenkins-cicd-nodejs-pipeline`](https://github.com/emmanuelfornah/jenkins-cicd-nodejs-pipeline)
+and [`docker-containerization-nodejs`](https://github.com/emmanuelfornah/docker-containerization-nodejs)
+cover tool-agnostic CI/CD and containers (Jenkins, Docker) for the
+environments that aren't pure cloud-native shops, healthcare IT included.
 
 ## Education & Certifications
 
@@ -101,7 +101,7 @@ Verification: [Credly profile](https://www.credly.com/users/emmanuel-fornah)
 | [eventbridge-decoupled-architecture](serverless/eventbridge-decoupled-architecture/) | EventBridge, WebSocket API | Event-driven microservices with real-time updates |
 | [kinesis-streaming-pipeline](serverless/kinesis-streaming-pipeline/) | Kinesis, DynamoDB Streams, OpenSearch | Real-time stream processing and analytics |
 
-### AI/ML (9 projects)
+### AI/ML (8 projects)
 | Project | Services | Description |
 |---------|----------|-------------|
 | [bedrock-console-introduction](ai-ml/bedrock-console-introduction/) | Bedrock | Foundation model exploration and parameter tuning |
@@ -112,14 +112,14 @@ Verification: [Credly profile](https://www.credly.com/users/emmanuel-fornah)
 | [langchain-ai-development](ai-ml/langchain-ai-development/) | Bedrock, LangChain | Prompt templates, output parsers, document loaders |
 | [langchain-chatbots](ai-ml/langchain-chatbots/) | Bedrock, LangChain, DynamoDB | Conversational AI with memory and Streamlit GUI |
 | [bedrock-guardrails-security](ai-ml/bedrock-guardrails-security/) | Bedrock Guardrails | Content filtering, PII detection, prompt injection mitigation |
-| [labveritas-order-redundancy](ai-ml/labveritas-order-redundancy/) | Bedrock, Bedrock Guardrails, Lambda, DynamoDB, SNS | Healthcare-focused analyte-level lab order redundancy detection with responsible AI controls |
 
 ## Tech Stack
 
 - **Languages**: Python, Bash, YAML/JSON
-- **IaC**: CloudFormation, SAM, CDK
+- **IaC**: Terraform, CloudFormation, SAM, CDK
 - **Containers**: Docker, ECS Fargate, EKS
-- **CI/CD**: CodePipeline, CodeBuild, CodeDeploy
+- **CI/CD**: CodePipeline, CodeBuild, CodeDeploy, GitHub Actions (OIDC), Jenkins
+- **Observability**: CloudWatch (SLOs, alarms, dashboards, Logs Insights), X-Ray
 - **AI/ML**: Amazon Bedrock, LangChain
 - **40+ AWS services** across 6 domains
 
