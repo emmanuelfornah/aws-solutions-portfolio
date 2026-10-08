@@ -1,6 +1,6 @@
 # AWS Solutions Portfolio
 
-A hands-on AWS project portfolio spanning compute, databases, security, serverless, CI/CD, and AI/ML, built during AWS Cloud Institute coursework and alongside ongoing graduate study in cloud computing — every project here was actually deployed and verified, not just followed along with in a video. This repo is the breadth layer of my cloud work; see **Flagship Projects** below for independently-designed, production-style systems built after this coursework, where the architecture decisions are mine.
+A hands-on AWS project portfolio spanning compute, databases, security, serverless, CI/CD, and AI/ML, built during AWS Cloud Institute coursework and a graduate degree in cloud computing — every project here was actually deployed and verified, not just followed along with in a video. This repo is the breadth layer of my cloud work; see **Flagship Projects** below for independently-designed, production-style systems built after this coursework, where the architecture decisions are mine.
 
 ## Flagship Projects (start here)
 
@@ -16,15 +16,18 @@ harder, self-directed problems where the architecture decisions were
 mine to make and defend.
 
 **A second, deliberately separate track:** everything above is AWS-native.
+[`infrastructure-portfolio`](https://gitlab.com/emmanuelfornah/infrastructure-portfolio)
+on GitLab covers traditional, tool-agnostic enterprise infrastructure:
+Jenkins, Nexus, Docker, Ansible, Kubernetes and Terraform, for the
+environments that aren't pure cloud-native shops, healthcare IT
+included. Related standalone repos:
 [`jenkins-cicd-nodejs-pipeline`](https://github.com/emmanuelfornah/jenkins-cicd-nodejs-pipeline)
-and [`docker-containerization-nodejs`](https://github.com/emmanuelfornah/docker-containerization-nodejs)
-cover tool-agnostic CI/CD and containers (Jenkins, Docker) for the
-environments that aren't pure cloud-native shops, healthcare IT included.
+and [`docker-containerization-nodejs`](https://github.com/emmanuelfornah/docker-containerization-nodejs).
 
 ## Education & Certifications
 
-**Graduate study (in progress):**
-- University of Maryland Global Campus — M.S. in Cloud Computing Systems (4.0 GPA; expected October 2026)
+**Graduate degree:**
+- University of Maryland Global Campus — M.S. in Cloud Computing Systems (4.0 GPA; completed October 2026)
 
 **Exam-based:**
 - AWS Certified Solutions Architect – Associate (exp. Aug 2029)
@@ -45,7 +48,7 @@ Verification: [Credly profile](https://www.credly.com/users/emmanuel-fornah)
 
 ## Projects by Domain
 
-### Compute (7 projects)
+### Compute
 | Project | Services | Description |
 |---------|----------|-------------|
 | [ec2-url-checker](compute/ec2-url-checker/) | EC2, SSM | Python URL checker on EC2 with Session Manager access |
@@ -56,14 +59,14 @@ Verification: [Credly profile](https://www.credly.com/users/emmanuel-fornah)
 | [fargate-ecs-deployment](compute/fargate-ecs-deployment/) | ECS, Fargate | Serverless container orchestration with awsvpc networking |
 | [eks-url-checker](compute/eks-url-checker/) | EKS, kubectl | Kubernetes deployment with imperative and declarative patterns |
 
-### Databases (3 projects)
+### Databases
 | Project | Services | Description |
 |---------|----------|-------------|
 | [dynamodb-tables-indexes](databases/dynamodb-tables-indexes/) | DynamoDB | Partition/sort key design and GSI query optimization |
 | [dynamodb-streams-lambda](databases/dynamodb-streams-lambda/) | DynamoDB Streams, Lambda | Change data capture with event-driven processing |
 | [dynamodb-capacity-scaling](databases/dynamodb-capacity-scaling/) | DynamoDB Auto Scaling | Provisioned vs on-demand capacity with auto scaling policies |
 
-### Security (8 projects)
+### Security
 | Project | Services | Description |
 |---------|----------|-------------|
 | [api-gateway-cognito-authorizer](security/api-gateway-cognito-authorizer/) | API Gateway, Cognito | JWT authentication with Cognito User Pools |
@@ -75,7 +78,7 @@ Verification: [Credly profile](https://www.credly.com/users/emmanuel-fornah)
 | [zero-trust-service-architecture](security/zero-trust-service-architecture/) | IAM, VPC Endpoints, API Gateway | SigV4 signing with multi-layer authorization |
 | [incident-response-automation](security/incident-response-automation/) | EventBridge, Lambda | Automated detection, isolation, and forensic snapshots (<10s response) |
 
-### CI/CD & Automation (11 projects)
+### CI/CD & Automation
 | Project | Services | Description |
 |---------|----------|-------------|
 | [codepipeline-unit-testing](cicd-automation/codepipeline-unit-testing/) | CodePipeline, CodeDeploy | Automated unit testing with pytest and TDD |
@@ -90,7 +93,7 @@ Verification: [Credly profile](https://www.credly.com/users/emmanuel-fornah)
 | [monitoring-applications-infrastructure](cicd-automation/monitoring-applications-infrastructure/) | CloudWatch, Lambda Canary | Custom metrics, dashboards, and synthetic monitoring |
 | [security-monitoring-cloudwatch-alarms](cicd-automation/security-monitoring-cloudwatch-alarms/) | CloudWatch, SNS | CPU alarms with SNS notification workflows |
 
-### Serverless & Event-Driven (7 projects)
+### Serverless & Event-Driven
 | Project | Services | Description |
 |---------|----------|-------------|
 | [lambda-dynamodb-crud](serverless/lambda-dynamodb-crud/) | Lambda, DynamoDB, S3 | Serverless CRUD API with Boto3 |
@@ -101,7 +104,7 @@ Verification: [Credly profile](https://www.credly.com/users/emmanuel-fornah)
 | [eventbridge-decoupled-architecture](serverless/eventbridge-decoupled-architecture/) | EventBridge, WebSocket API | Event-driven microservices with real-time updates |
 | [kinesis-streaming-pipeline](serverless/kinesis-streaming-pipeline/) | Kinesis, DynamoDB Streams, OpenSearch | Real-time stream processing and analytics |
 
-### AI/ML (8 projects)
+### AI/ML
 | Project | Services | Description |
 |---------|----------|-------------|
 | [bedrock-console-introduction](ai-ml/bedrock-console-introduction/) | Bedrock | Foundation model exploration and parameter tuning |
@@ -121,7 +124,6 @@ Verification: [Credly profile](https://www.credly.com/users/emmanuel-fornah)
 - **CI/CD**: CodePipeline, CodeBuild, CodeDeploy, GitHub Actions (OIDC), Jenkins
 - **Observability**: CloudWatch (SLOs, alarms, dashboards, Logs Insights), X-Ray
 - **AI/ML**: Amazon Bedrock, LangChain
-- **40+ AWS services** across 6 domains
 
 ## License
 
